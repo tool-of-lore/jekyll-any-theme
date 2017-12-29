@@ -1,0 +1,11 @@
+{% assign api_stack = site.emptyArray %}
+{% assign file = include.file | default: "api/example.html" %}
+{% capture load %}{% include {{ file }} %}{% endcapture %}
+{% assign file_path =	'_includes/' | append: file %}
+{% assign file_name = file | split: '/' | last | remove: '.html' %}
+{% capture file_title %}{% include components/un_slug.html string=file_name %}{% endcapture %}
+{% capture link_to_file %}{% include components/link_to_file.html file=file_path %}{% endcapture %}
+{% assign file_info = "- **File [`" | append: file_path | append: "`](" | append: link_to_file | strip | append: ")**
+	" %}
+{% assign api_content = api_stack[0] | prepend: file_info %}
+{% include components/card.html header=file_title text=api_content classes=include.classes %}

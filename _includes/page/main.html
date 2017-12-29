@@ -1,0 +1,13 @@
+<main class="container{{ fluid }}">{%
+  assign rows = content | split: "<!--row-->" %}{%
+  for row in rows %}
+  <div class="row">{%
+    assign j = forloop.index0 %}{%
+    assign columns = row | split: "<!--column-->" %}{%
+    for column in columns %}
+    <div class="col">{%
+      assign column_live = rows[j] | split: "<!--column-->" %}
+      {{ column_live[forloop.index0] }}
+    </div>{% endfor %}
+  </div>{% endfor %}
+</main>
