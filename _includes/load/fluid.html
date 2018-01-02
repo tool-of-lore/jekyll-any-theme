@@ -1,4 +1,4 @@
-{% capture api %}
+{%- capture api -%}
 Store additional `-fluid` class in `fluid` liquid variabile. It will be `-fluid` or `nil`.
 
 - **Usage**
@@ -14,5 +14,8 @@ Store additional `-fluid` class in `fluid` liquid variabile. It will be `-fluid`
 - **Type:** string
 - **Default:** nil
 - **Description:** Used for fluid layout in the elements `.container`
-{% endcapture %}
-{% include api/save.html %}{% if collection.fluid or page.fluid %}{% assign fluid = "-fluid" %}{% endif %}
+{%- endcapture -%}
+{%- include api/save.html -%}
+{%- if collection.fluid or page.fluid -%}
+  {%- assign fluid = "-fluid" -%}
+{%- endif -%}

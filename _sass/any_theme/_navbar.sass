@@ -1,0 +1,16 @@
+body > nav,
+header > nav
+  @extend .navbar-dark, .bg-dark
+  border-bottom: 1px solid $bg-frame
+
+footer nav
+  @extend .navbar-light, .bg-frame
+
+.navbar-toggler
+  color: $gray-900
+
+.navbar-expand-lg
+  .navbar-nav
+    .nav-link,
+    .navbar-text
+      @extend .px-9

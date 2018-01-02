@@ -1,40 +1,21 @@
 ---
 ---
-
-//
-// Bootsrap_init
-//
+// Bootstrap_init
 @import "bootstrap/functions"
 @import "bootstrap/variables"
 
 //
-// any-theme_init
+// any-theme
 //
-
-// font weights .fw-1, .fw-2, .fw-3
-@each $weight in (1, 2, 3)
-  .fw-#{$weight}
-    font-weight: $weight * 100
-
-// classes
-.py-dos
-  padding-right: $spacer * 2 !important
-  padding-left: $spacer * 2 !important
-
-//
-// Bootsrap Override variables
-//
-$font-family-sans-serif: "Helvetica Neue", Arial, sans-serif
-$font-family-base: $font-family-sans-serif
-$font-size-base: 1.2rem
-$form-check-input-margin-y: 0.45rem
-$frame-color: $gray-200
+@import "any_theme/variables"
+@import "any_theme/classes"
+@import "any_theme/fonts"
 
 //
 // Bootstrap_end
 //
 @import "bootstrap/mixins"
-@import "bootstrap/print"
+// @import "bootstrap/root"
 @import "bootstrap/reboot"
 @import "bootstrap/type"
 @import "bootstrap/images"
@@ -65,57 +46,36 @@ $frame-color: $gray-200
 @import "bootstrap/popover"
 @import "bootstrap/carousel"
 @import "bootstrap/utilities"
+@import "bootstrap/print"
 
-//
-// any-theme
-//
 
 // layout
 html
-  background-color: $frame-color
+  @extend .bg-frame
+
 // header
 header
-  @extend .mb-0, .jumbotron, .rounded-0
+  @extend .mb-0, .jumbotron, .rounded-0, .py-4
   div h1
-    @extend .fw-3, .text-muted
+    @extend .text-muted, .mb-0
     span
       color: initial
 
 // main
 main
-  .row
-    @extend .my-5
+  @extend .mt-5, .mb-8
+  // .row
+  //   @extend .my-4
   &.container-fluid
-    @extend .py-dos
-  h1, h2, h3, h4, h5, h6,
-  .h1, .h2, .h3, .h4, .h5, .h6
-    @extend .mb-4
+    @extend .px-5
 
-// footer
-footer
-  background-color: $frame-color
+// tables
+table
+  @extend .table
 
-// Type
-h1
-  small
-    font-weight: inherit
-
-// buttons
-button
-  &:hover
-    cursor: pointer
-  &:active
-    opacity: 0.5
-// checkbox label
-.form-check
-  padding-top: $input-btn-padding-y
-  .form-check-label
-    cursor: pointer
-// border-only Class
-.border-only-bottom
-  @extend .border, .border-top-0, .border-right-0, .border-left-0
-.modal-header
-  @extend .border-only-bottom, .border-primary
+// collapse
+a[data-toggle="collapse"]
+  @extend .text-muted
 
 // DATE picker
 .datepicker-container
@@ -128,4 +88,30 @@ button
   small
     @extend .form-text, .text-muted, .ml-1
 
-// @import "tool_of_lore/layout"
+// Code
+// Give a slight padding and a tiny background (overridden in _syntax_<theme>.sass)
+pre.highlight
+  @extend .p-2, .m-2
+  background: $bg-pre
+// Fix bottom margin by `_sass/bootstrap/_reboot.scss`
+pre
+  @extend .mb-0
+
+// Cards
+p:last-of-type,
+.card ul:last-of-type,
+table:last-of-type
+  @extend .mb-0
+.card-title:first-of-type
+  @extend .mt-0
+
+// Dropdowns
+.dropdown-toggle::after
+  margin-left: $caret-width * .3
+  vertical-align: $caret-width * .3
+
+@import "any_theme/headings"
+@import "any_theme/syntax_default"
+@import "any_theme/navbar"
+@import "any_theme/forms"
+@import "any_theme/alerts"

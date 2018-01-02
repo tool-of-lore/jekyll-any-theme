@@ -6,4 +6,14 @@ plugins:
   - jekyll-github-metadata
   - jekyll-coffeescript
 
+# Defaults
+defaults:
+  -
+    scope:
+      path: assets/pages
+    values:
+      fluid: false
+      navbar: bottom
+      theme: any-theme
+
 emptyArray: []

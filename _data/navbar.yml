@@ -1,4 +1,10 @@
 left:
   - Home
-right:
+  - Docs:
+    - Components
+    - Tempus
+  - Customize:
+    - Themes
   - About
+right:
+  - Login

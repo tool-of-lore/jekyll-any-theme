@@ -1,23 +1,32 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg">
 	<div class="container{{ fluid }}">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse" id="navbarHeader">
 			<ul class="navbar-nav mr-auto">
-				{% for nav in site.data.navbar.left %}{% assign link = site.pages | where:'title', nav %}
-				<li class="nav-item{% if page.url == link[0].url %} active{% endif %}">
-					<a class="nav-link" href="{{ link[0].url }}">{{ nav }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
+				{% for nav in site.data.navbar.left %}{% if nav.first == nil %}{% assign link = site.pages | where:'title', nav | default: [url: nav] %}
+				{% include page/navbar_link.html %}{% else %}
+				{% assign list_title = nav | first | first %}{% assign list = nav.first[1] %}
+				<!-- Dropdown -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ list_title }}
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						{% for item in list %}{% assign link = site.pages | where:'title', item | default: nil %}
+							<a class="dropdown-item{% if page.url == link[0].url %} active{% endif %}" href="{{ link[0].url }}">{{ item }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
+						{% endfor %}
+					</div>
 				</li>
+				{% endif %}
 				{% endfor %}
 			</ul>
 			<ul class="navbar-nav my-lg-0">
 				{% for nav in site.data.navbar.right %}{% assign link = site.pages | where:'title', nav %}
-				<li class="nav-item{% if page.url == link[0].url %} active{% endif %}">
-					<a class="nav-link" href="{{ link[0].url }}">{{ nav }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
-				</li>
+				{% include page/navbar_link.html %}
 				{% endfor %}
 			</ul>
 		</div>

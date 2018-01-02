@@ -1,0 +1,77 @@
+{%- assign now = "now" | date: "%s" -%}
+{%- assign day_seconds = 86400 -%}
+{%- assign year_seconds = day_seconds | times: 364 -%}
+{%- comment -%}
+  LOOP CALENDARS
+{%- endcomment -%}
+{%- for calendar in site.data.tempus.events -%}
+{% if include.calendar == nil or include.calendar == calendar.title %}
+
+**{{ calendar.title }}**
+  {%- if include.from or calendar.from -%}
+    {%- assign start = include.from | default: calendar.from | date: "%s" -%}
+  {%- else -%}
+    {%- assign start = "now" | date: "%s" -%}
+  {%- endif -%}
+  {%- if include.to or calendar.to -%}
+    {%- assign end = include.to | default: calendar.to | date: "%s" -%}
+  {%- else -%}
+    {%- comment -%}
+      ADD ONE YEAR FROM THE START
+    {%- endcomment -%}
+    {%- assign end = start | plus: year_seconds -%}
+  {%- endif -%}
+  {%- comment -%}
+    CALCULATE DAYS
+  {%- endcomment -%}
+  {%- assign days = end | minus: start | divided_by: day_seconds | round -%}
+  {%- comment -%}
+    LOOP DAYS
+  {%- endcomment -%}
+  {%- for d in (0..days) -%}
+    {%- assign increment = d | times: day_seconds -%}
+    {%- assign day = start | plus: increment -%}
+    {%- assign week_day = day | date: "%A" -%}
+    {%- assign compare = day | date: "%Y-%m-%d" -%}
+    {%- assign found = false -%}
+    {%- for e in calendar.events -%}
+      {% if include.event == nil or include.event == e.title %}
+        {%- comment -%}
+          DAY EVENT
+        {%- endcomment -%}
+        {%- if e.day -%}
+          {%- assign date = e.day | date: "%Y-%m-%d" -%}
+          {%- assign unix = e.day | date: "%s" -%}
+          {%- if compare == date -%}
+            {%- assign found = true -%}
+            {%- assign difference = unix | minus: now | divided_by: day_seconds | round | times: -1 -%}
+            {% if difference == 0 %}{%- assign difference = "today" -%}{% endif %}
+- {{ e.day | date: "%B %-d %A" }}{% if e.title %}: {% if e.color %}<span style="color: {{ e.color }}">{% endif %}**{{ e.title }}**{% endif %} <span class="small text-muted">{{ difference }}
+          {%- endif -%}
+        {%- comment -%}
+          WEEKLY EVENT
+        {%- endcomment -%}
+        {%- elsif e.weekly.day -%}
+          {%- assign week_offset = e.weekly.offset | default: 0 -%}
+          {%- assign week_jump = e.weekly.jump | default: 1 -%}
+          {%- assign week = day | date: "%U" | minus: week_offset | modulo: week_jump -%}
+          {%- assign split = e.weekly.day | split: "," -%}
+          {%- for weekly_day in split -%}
+            {%- assign weekly_day_stripped = weekly_day | strip -%}
+            {%- if weekly_day_stripped == week_day and week == 0 -%}
+              {%- assign unix = day | date: "%s" -%}
+              {%- assign found = true -%}
+              {%- assign difference = unix | minus: now | divided_by: day_seconds | round | times: -1 -%}
+              {% if difference == 0 %}{%- assign difference = "today" -%}{% endif %}
+- {{ day | date: "%B %-d %A" }}{% if e.title %}: {% if e.color %}<span style="color: {{ e.color }}">{% endif %}**{{ e.title }}**{% endif %} <span class="small text-muted">{{ difference }}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {% if include.complete and found == false %}
+- <span class="text-muted">{{ day | date: "%B %-d %A" }}
+    {% endif %}
+  {%- endfor -%}
+{%- endif -%}
+{%- endfor -%}

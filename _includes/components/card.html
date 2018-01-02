@@ -1,0 +1,83 @@
+{% capture api %}
+Return HTML markup for a card, optional parameters are `header`, `title`, `text`, `footer` and `classes`.
+
+- **Usage**
+
+```liquid
+{% raw %}{% include components/card.html %}{% endraw %}
+```
+
+```liquid
+{% raw %}{% include components/card.html title=title header=header text=text footer=footer classes=classes %}{% endraw %}
+```
+
+- **Return**
+
+```html
+<div class="card {% raw %}{{ include.classes | default: '' }}{% endraw %}">
+  <div class="card-header">
+    {% raw %}{{ include.header }}{% endraw %}
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{% raw %}{{ include.title }}{% endraw %}</h4>
+    {% raw %}{{ include.text | strip | markdownify }}{% endraw %}
+  </div>
+  <div class="card-footer">
+    {% raw %}{{ include.footer | strip | markdownify }}{% endraw %}
+  </div>
+</div>
+```
+
+- **Include**
+
+#### `header`
+
+- **Type:** string
+- **Optional:** yes
+- **Description:** The card header
+
+#### `title`
+
+- **Type:** string
+- **Optional:** yes
+- **Description:** The card title inside `.card-body`
+
+#### `text`
+
+- **Type:** markdown
+- **Optional:** yes
+- **Description:** The content of the `.card-text`
+
+#### `footer`
+
+- **Type:** markdown
+- **Optional:** yes
+- **Description:** The content of the `.card-footer`
+
+#### `classes`
+
+- **Type:** string
+- **Optional:** yes
+- **Description:** Additional card css classes
+- **Example values:**
+  - `text-center text-right`: text alignment
+  - `text-white`: text color
+  - `w-25 w-50 w-75 w-100`: width
+  - `bg-dark`: background color
+  - `border-info`: border color
+
+{% endcapture %}
+{% include api/save.html %}
+<div class="card {{ include.classes | default: "" }}">{% if include.image %}
+  <img class="card-img-top" src="{{ include.image }}" alt="Card image cap">{% endif %}{% if include.header %}
+  <div class="card-header">
+    {{ include.header }}
+  </div>{% endif %}
+  <div class="card-body">{% if include.title %}
+    <h4 class="card-title">{{ include.title }}</h4>{% endif %}{% if include.text %}
+    {{ include.text | strip | markdownify }}{% endif %}
+  </div>{% if include.footer %}
+  <div class="card-footer">
+  {{ include.footer | strip | markdownify }}
+  </div>{% endif %}
+</div>

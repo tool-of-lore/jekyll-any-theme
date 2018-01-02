@@ -1,0 +1,7 @@
+{%- if page.navbar == 'top' or collection.navbar == 'top' -%}
+  {% include page/navbar.html %}
+{%- endif -%}
+{% include page/header.html %}
+{%- if page.navbar == 'bottom' or collection.navbar == 'bottom' -%}
+  {% include page/navbar.html %}
+{%- endif -%}

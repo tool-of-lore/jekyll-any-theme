@@ -1,0 +1,7 @@
+{%- if collection.theme -%}
+  {%- assign theme = collection.theme -%}
+{%- elsif page.theme -%}
+  {%- assign theme = page.theme -%}
+{%- else -%}
+  {%- assign theme = 'any-theme' -%}
+{%- endif -%}

@@ -1,3 +1,7 @@
-{% capture api %}
-Load `collection`, `fluid` liquid variabiles, checked in `collection` or `page` scope.
-{% endcapture %}{% include api/save.html %}{% include load/collection.html %}{% include load/fluid.html %}
+{%- capture api -%}
+Load page's `collection`, `fluid` liquid variabiles and `theme`. Are checked in `collection` or `page` scope.
+{%- endcapture -%}
+{%- include api/save.html -%}
+{%- include load/collection.html -%}
+{%- include load/fluid.html -%}
+{%- include load/theme.html -%}

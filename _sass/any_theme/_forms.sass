@@ -1,0 +1,22 @@
+// forms
+form
+  // Set some padding
+  @extend .p-3
+  // Add left margin to labels and old .help-text
+  .form-group
+    label,
+    .form-text,
+    .invalid-feedback
+      @extend .ml-1
+  // Set right cursor over checkboxe and radio labels
+  .custom-checkbox,
+  .custom-radio
+    label.custom-control-label
+      @extend .pointer
+
+// buttons
+// button
+//   &:hover
+//     @extend .pointer
+//   &:active
+//     opacity: 0.5
