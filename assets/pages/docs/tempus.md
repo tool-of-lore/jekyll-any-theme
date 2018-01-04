@@ -8,25 +8,33 @@ permalink: components/tempus/
 
 <!--row-->
 
-**Options**
+### Options
 
-- *`now`: boolean (false)
+**Time span**
+
 - *`from`: date YYYY-MM-DD
 - *`to`: date YYYY-MM-DD
+- *`days`: number
+- *`past`: boolean (true), show past days
+
+**Filter**
+
 - *`event`: event.name
 - *`calendar`: calendar.name
-- `month`: number
-- *`complete`: boolean (false), show empty days
+
+**View**
+
+- *`empty`: boolean (false), show empty days
 
 <!--column-->
 
 #### Now
 
 ```liquid
-{% raw %}{% include tempus/now.html %}{% endraw %}
+{% raw %}{% include tempus/now.html past=false days="6" %}{% endraw %}
 ```
 
-{% include tempus/now.html %}
+{% include tempus/now.html past=false days="6" %}
 
 <!--row-->
 
