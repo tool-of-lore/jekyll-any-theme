@@ -34,7 +34,7 @@
           {%- if loop_day == event_date -%}
             {%- assign found = true -%}
             {%- assign unix = e.day | date: "%s" -%}
-            {%- assign difference = unix | minus: now | divided_by: day_seconds | ceil | times: -1 -%}
+            {%- assign difference = unix | plus: day_seconds | minus: now | divided_by: day_seconds | ceil | times: -1 -%}
             {% if difference == 0 %}{%- assign difference = "today" -%}{% endif %}
 - {{ e.day | date: "%B %-d %A" }}{% if e.title %}: {% if e.color %}<span style="color: {{ e.color }}">{% endif %}**{{ e.title }}**{% endif %} <span class="small text-muted">{{ difference }}
           {%- endif -%}
