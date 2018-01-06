@@ -3,6 +3,7 @@ title: About
 description: Jekyll any theme – Customizable Bootstrap 4
 permalink: about/
 ---
+<a href="Check">Check</a>
 
 ## About page
 

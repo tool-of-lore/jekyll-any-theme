@@ -11,14 +11,17 @@
       </div>
       <div class="modal-body">
         <div class="form-group mt-3">
-          <label for="personal_token">Generate a <a href="https://github.com/settings/tokens" target="_blank">GitHub personal token</a> and paste here.</label>
-          <input autocomplete="new-password" type="password" class="form-control" id="personal_token" placeholder="personal token">
-          <small class="form-text text-muted">Will be hashed and stored on <code>localStorage</code>.<br><strong>Logout</strong> to erase permanently from the browser.</small>
+          <label for="personalToken">Generate a <a href="https://github.com/settings/tokens" target="_blank">GitHub personal token</a> and paste below.</label>
+          <input autocomplete="new-password" type="password" class="form-control" id="personalToken" placeholder="personal token">
+          <div class="invalid-feedback">
+            &nbsp;
+          </div>
+          <small class="form-text text-muted">Personal token will be hashed and stored on <code>localStorage</code>.<br><strong>Logout</strong> to erase permanently from the browser.</small>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="submitLogin" class="btn btn-primary">Login</button>
+        <button type="submit" id="submitLogin" class="btn btn-primary">Login</button>
       </div>
     </form>
   </div>
