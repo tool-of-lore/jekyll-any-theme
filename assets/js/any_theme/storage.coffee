@@ -1,6 +1,10 @@
 storage = {
   init: () ->
     if !localStorage.getItem("any-theme")? then storage.store { "created": new Date().getTime() }
+    $('a[href="Show"]').on "click", (e) ->
+      e.preventDefault()
+      console.log storage.get()
+      true
     true
   clear: (key) ->
     obj = storage.get()
@@ -9,17 +13,19 @@ storage = {
       storage.store obj
       true
     else
-      localStorage.clear 'any-theme'
+      localStorage.removeItem 'any-theme'
       true
   set: (key, value) ->
+    if !localStorage.getItem("any-theme")? then storage.init()
     obj = storage.get()
     if key? and value?
       obj[key] = value
       storage.store obj
-      true
+      return storage
     else
       false
   get: (key) ->
+    if !localStorage.getItem("any-theme")? then storage.init()
     if key?
       storage.get()[key]
     else
