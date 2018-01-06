@@ -1,15 +1,22 @@
 ---
 ---
-// Bootstrap_init
+// Bootstrap initialize
 @import "bootstrap/functions"
 @import "bootstrap/variables"
 
-//
-// any-theme
-//
-@import "any_theme/variables"
-@import "any_theme/classes"
-@import "any_theme/fonts"
+// Font size
+$font-size-base: 19px
+$code-font-size: 80%
+
+// Base font family
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500")
+$font-family-sans-serif: "Roboto", Arial, sans-serif
+$font-family-base: $font-family-sans-serif
+
+// Headings font family
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700")
+$font-family-headings: "Roboto Slab", serif
+$font-family-headings-header: $font-family-headings
 
 //
 // Bootstrap_end
@@ -48,6 +55,59 @@
 @import "bootstrap/utilities"
 @import "bootstrap/print"
 
+// Headings mixin
+ @include headings(1,6,':first-child','main > ')
+ content
+ main > h1:first-child, main > .h1:first-child
+ content
+@mixin headings($from: 1, $to: 6, $condition: '', $prescope: '')
+  @for $i from $from through $to
+    #{$prescope}h#{$i}#{$condition}, #{$prescope}.h#{$i}#{$condition}
+      @content
+
+// html color
+$bg-frame: $gray-200
+
+// code background color
+$bg-pre: $gray-100
+
+// big spaces
+$big_spacer: ( 6: ($spacer * 2), 7: ($spacer * 2.5), 8: ($spacer * 4), 9: ($spacer * 0.7) )
+
+//
+// CLASSES
+//
+
+// font weights .fw-1, ... .fw-9
+@for $weight from 1 through 9
+  .fw-#{$weight}
+    font-weight: $weight * 100
+
+// Cursor pointer
+.pointer
+  cursor: pointer
+
+// Background frame
+.bg-frame
+  background-color: $bg-frame
+
+// Bottom border only Class
+.bb
+  @extend .border, .border-top-0, .border-right-0, .border-left-0
+
+// Big spacers
+@each $prop, $abbrev in (margin: m, padding: p)
+  @each $size, $length in $big_spacer
+    .#{$abbrev}-#{$size}
+      #{$prop}: $length
+    .#{$abbrev}t-#{$size}, .#{$abbrev}y-#{$size}
+      #{$prop}-top: $length
+    .#{$abbrev}r-#{$size}, .#{$abbrev}x-#{$size}
+      #{$prop}-right: $length
+    .#{$abbrev}b-#{$size}, .#{$abbrev}y-#{$size}
+      #{$prop}-bottom: $length
+    .#{$abbrev}l-#{$size}, .#{$abbrev}x-#{$size}
+      #{$prop}-left: $length
 
 // layout
 html
@@ -56,22 +116,31 @@ html
 // header
 header
   @extend .mb-0, .jumbotron, .rounded-0, .py-4
-  div h1
+  // Headings
+  @include headings()
     @extend .text-muted, .mb-0
+    font-family: $font-family-headings-header
     span
+      @extend .fw-9
       color: initial
 
 // main
 main
   @extend .mt-5, .mb-8
-  // .row
-  //   @extend .my-4
   &.container-fluid
     @extend .px-5
+  // Headings
+  @include headings()
+    @extend .mt-5, .mb-3
+  .col
+    @include headings(1, 6, ':first-child')
+      @extend .mt-0
 
 // tables
 table
   @extend .table
+  &:last-of-type
+    @extend .mb-0
 
 // collapse
 a[data-toggle="collapse"]
@@ -88,20 +157,20 @@ a[data-toggle="collapse"]
   small
     @extend .form-text, .text-muted, .ml-1
 
-// Code
-// Give a slight padding and a tiny background (overridden in _syntax_<theme>.sass)
-pre.highlight
-  @extend .p-2, .my-2
-  background: $bg-pre
-// Fix bottom margin by `_sass/bootstrap/_reboot.scss`
+//
+// CODE
+//
 pre
   @extend .mb-0
+  &.highlight
+    @extend .p-2, .my-2
+    background: $bg-pre
 
-// Cards
+//
+// CARDS
+//
 .card p:last-of-type,
 .card ul:last-of-type,
-table:last-of-type
-  @extend .mb-0
 .card-title:first-of-type
   @extend .mt-0
 
@@ -110,8 +179,47 @@ table:last-of-type
   margin-left: $caret-width * .3
   vertical-align: $caret-width * .3
 
-@import "any_theme/headings"
+@include headings()
+  font-family: $font-family-headings
+  letter-spacing: -1px
+  @extend .fw-3
+
+// NAVBARS
+body > nav,
+header > nav
+  @extend .navbar-dark, .bg-dark
+  border-bottom: 1px solid $bg-frame
+
+footer nav
+  @extend .navbar-light, .bg-frame
+
+.navbar-toggler
+  color: $gray-900
+
+.navbar-expand-lg
+  .navbar-nav
+    .nav-link,
+    .navbar-text
+      @extend .px-9
+
+// FORMS
+form
+  // Checkbox
+  .custom-checkbox,
+  .custom-radio
+    label.custom-control-label
+      @extend .pointer
+
+// ALERTS
+$alert_color_levels: -10 -9 5 6
+// Loop
+@each $color, $value in $theme-colors
+  .alert-#{$color}
+    @include alert-variant(theme-color-level($color, nth($alert_color_levels, 1)), theme-color-level($color, nth($alert_color_levels, 2)), theme-color-level($color, nth($alert_color_levels, 3)))
+    a
+      color: theme-color-level($color, nth($alert_color_levels, 4))
+.alert a
+  @extend .alert-link
+
+// CODE SYNTAX
 @import "any_theme/syntax_default"
-@import "any_theme/navbar"
-@import "any_theme/forms"
-@import "any_theme/alerts"

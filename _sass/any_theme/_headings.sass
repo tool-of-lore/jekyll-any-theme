@@ -1,28 +1,23 @@
 // HEADINGS
 
-// Mixin
-// @include headings(1,6,':first-child','main > ')
-//   content
-// main > h1:first-child, main > .h1:first-child
-//   content
-@mixin headings($from: 1, $to: 6, $condition: '', $prescope: '')
-  @for $i from $from through $to
-    #{$prescope}h#{$i}#{$condition}, #{$prescope}.h#{$i}#{$condition}
-      @content
 
-@mixin estendi($class_list)
-  @each $class in $class_list
-    @extend .#{$class}
-// Set font-weight and font-family for Headings
+
 @include headings()
-  @extend .fw-3
   font-family: $font-family-headings
+  letter-spacing: -1px
+  @extend .fw-3
+
+header
+  @include headings()
+    @extend .text-muted, .mb-0
+    font-family: $font-family-headings-header
+    span
+      @extend .fw-9
+      color: initial
 
 main
-  // Set margin top and bottom for Headings inside <main>
   @include headings()
-    @include estendi(mt-5 mb-3)
-  // Reset margin-top for top-of-page headings
-  .row:first-child .col
-    @include headings(1,6,':first-child')
+    @extend .mt-5, .mb-3
+  .col
+    @include headings(1, 6, ':first-child')
       @extend .mt-0
