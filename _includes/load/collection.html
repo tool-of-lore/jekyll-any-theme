@@ -1,4 +1,4 @@
-{% capture api %}
+{%- capture api -%}
 Store the page's collection in `collection` liquid variabile. It will be the page collection or `nil`.
 
 - **Usage**
@@ -14,5 +14,6 @@ Store the page's collection in `collection` liquid variabile. It will be the pag
 - **Type:** hash
 - **Default:** nil
 - **Description:** Used to check collection defaults
-{% endcapture %}
-{% include api/save.html %}{% assign collection = site.collections | where: "label", page.collection | first %}
+{%- endcapture -%}
+{%- include api/save.html -%}
+{%- assign collection = site.collections | where: "label", page.collection | first -%}

@@ -8,19 +8,36 @@
 
 // Background frame color.
 // Used in: html and footer nav
-$bg-frame: $gray-200
+$bg-frame: darken($gray-900,2%)
 // use extending his class
 .bg-frame
   background-color: $bg-frame
 
-// Dropdown
-$dropdown-bg: $gray-800
-$dropdown-border-color: rgba($white, .15)
-
-$dropdown-link-color: $gray-200
-$dropdown-link-hover-color: $gray-100
-$dropdown-link-hover-bg: $gray-900 
-// FONTS
+// DARK
+$body-bg: $bg-frame
+$body-color: $gray-200
+// Cards
+$card-bg: $body-bg
+$card-border-color: rgba($white, .125)
+$card-border-color: rgba($white, .125)
+$card-cap-bg: rgba($white, .03)
+// Header
+$jumbotron-bg: theme-color("dark")
+// dropdown
+$dropdown-link-hover-bg: $gray-200
+// MODALS
+$modal-content-bg: $bg-frame
+$modal-content-border-color: rgba($white, .2)
+$modal-header-border-color: $gray-800
+$modal-footer-border-color: $modal-header-border-color
+// TABLES
+$table-border-color: $gray-700
+// LINKS
+$link-hover-color: lighten($link-color, 15%)
+// BORDERS
+$border-color: $gray-800
+// CODE
+$code-color: $gray-400
 
 // Font size
 $font-size-base: 19px
@@ -122,9 +139,20 @@ html
 header
   @extend .mb-0, .jumbotron, .rounded-0, .py-4
 
+// Font-Weight for light foreground
+main p,
+.alert,
+.modal-body,
+.table,
+code
+  @extend .fw-3
+
 // MAIN
 main
   @extend .mt-5, .mb-8
+  p
+    @extend .fw-3
+    letter-spacing: .1px
   &.container-fluid
     @extend .px-5
 
@@ -145,7 +173,7 @@ header
     font-family: $font-family-headings-header
     span
       @extend .fw-8
-      color: $black
+      color: $white
 // MAIN Headings
 main
   @include headings()
@@ -158,12 +186,10 @@ main
 // Top main nav
 body > nav,
 header > nav
-  @extend .navbar-dark, .bg-dark, .fw-3
-  a.dropdown-item
-    @extend .fw-3
+  @extend .navbar-light, .bg-light
 // Footer nav
 footer nav
-  @extend .navbar-light, .bg-frame
+  @extend .navbar-dark, .bg-dark, .fw-3
 // Hamburger for mobile
 .navbar-toggler
   color: $gray-900
@@ -191,7 +217,7 @@ a[data-toggle="collapse"]
 // Fix margings, paddings and background-color
 code
   padding: 2px 4px
-  background-color: $gray-100
+  background-color: rgba($black,.1)
 
 pre.highlight
   @extend .p-2
@@ -201,6 +227,11 @@ pre.highlight
   border-radius: $border-radius
   code
     padding: unset
+    background-color: transparent
+
+// MODAL
+.close
+  color: $white
 
 // CARDS
 // Remove top margins for `last-of-type` objects
@@ -228,7 +259,7 @@ pre.highlight
 
 // ALERTS
 // Fix dark link colors inside alerts
-$alert_color_levels: -10 -9 5 6
+$alert_color_levels: 5 -2 -8 -3
 // Loop
 @each $color, $value in $theme-colors
   .alert-#{$color}
@@ -270,4 +301,4 @@ $alert_color_levels: -10 -9 5 6
     @extend .form-text, .text-muted, .ml-1
 
 // CODE SYNTAX
-@import "any_theme/syntax_default"
+@import "any_theme/syntax_dark"

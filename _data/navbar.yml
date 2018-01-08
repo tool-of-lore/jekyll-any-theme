@@ -4,7 +4,10 @@ left:
     - Components
     - Tempus
   - Customize:
-    - Themes
+    - Css
+  - Themes:
+    - Bootstrap
+    - Dark
   - About
 right:
   - Login

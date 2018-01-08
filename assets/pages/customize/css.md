@@ -1,7 +1,7 @@
 ---
-title: Themes
-description: Themes
-permalink: customize/themes/
+title: Css
+description: Css
+permalink: customize/css/
 ---
 
 # Themes

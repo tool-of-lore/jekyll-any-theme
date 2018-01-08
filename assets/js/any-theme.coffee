@@ -21,3 +21,8 @@ $ 'a[href="Page info"]'
 		e.preventDefault()
 		$ '#pageinfoModal'
 			.modal 'show'
+
+# Active navbar link on dropdowns
+$('li.dropdown').each ->
+	if $(@).find('div.dropdown-menu a.active').length then $(@).addClass 'active'
+	true

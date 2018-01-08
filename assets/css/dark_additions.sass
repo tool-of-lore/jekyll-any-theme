@@ -1,0 +1,74 @@
+// theme colors
+$theme-colors: (primary: $blue, secondary: $gray-600, success: darken($green,5%), info: $cyan, warning: $yellow, danger: darken(#de091d,5%), light: $gray-100, dark: $gray-800)
+
+$dark: theme-color("dark")
+$main-bg: rgb(10,10,10)
+$body-bg: rgb(10,10,10)
+$body-color: $gray-200
+$html-bg: darken($dark, 10%)
+$footer-bg: darken($dark, 10%)
+$details-bg: $gray-900
+$jumbotron-bg: darken($dark, 10%)
+$hr-border-color: rgba($white,.1)
+$table-border-color: $gray-800
+$page-title-border-color: $hr-border-color
+// input fileds
+$input-bg: $black
+$input-color: $gray-300
+$input-focus-bg: $input-bg
+$input-focus-color: $input-color
+$input-disabled-bg: $gray-800
+
+//
+// Links
+//
+// $link-color: desaturate(theme-color("warning"), 15%)
+$link-hover-color: lighten($link-color, 15%)
+
+//
+// Navbar
+//
+$navbar-classes: navbar-dark bg-dark text-uppercase
+
+//
+// Cards
+//
+$card-bg: darken($dark, 10%)
+$card-border-color: lighten($dark, 10%)
+$card-cap-bg: $dark
+
+// Lists
+.list-group-item:not([class*='list-group-item-'])
+  @extend .bg-dark
+.list-group
+  @extend .mb-3
+
+//
+// Code
+//
+$code-bg: darken($main-bg, 15%)
+$code-color: $gray-500
+$pre-color: $gray-200
+
+// Pagination
+$pagination-link-classes: bg-dark border-secondary
+
+// Breadcrumb
+$breadcrumb-classes: join($breadcrumb-classes, 'bg-dark', comma)
+
+// Dropdown
+$dropdown-bg:                    $dark
+$dropdown-border-color:          rgba($white,.15)
+$dropdown-divider-bg:            $gray-800
+$dropdown-box-shadow:            0 .5rem 1rem rgba($white,.175)
+$dropdown-link-color:            $gray-100
+$dropdown-link-hover-color:      lighten($gray-100, 5%)
+$dropdown-link-hover-bg:         $gray-900
+$dropdown-link-active-color:     $component-active-color
+$dropdown-link-active-bg:        $component-active-bg
+$dropdown-link-disabled-color:   $gray-400
+$dropdown-header-color:          $gray-400
+
+// Alerts
+// $background, $border, $color and link color levels (theme-color-interval multiplier)
+$alert_color_levels: 5 -2 -8 -3

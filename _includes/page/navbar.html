@@ -7,25 +7,31 @@
 
 		<div class="collapse navbar-collapse" id="navbarHeader">
 			<ul class="navbar-nav mr-auto">
-				{% for nav in site.data.navbar.left %}{% if nav.first == nil %}{% assign link = site.pages | where:'title', nav | default: [url: nav] %}
-				{% include components/navbar_link.html %}{% else %}
-				{% assign list_title = nav | first | first %}{% assign list = nav.first[1] %}
-				<!-- Dropdown -->
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					{{ list_title }}
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						{% for item in list %}{% assign link = site.pages | where:'title', item | default: nil %}
-							<a class="dropdown-item{% if page.url == link[0].url %} active{% endif %}" href="{{ link[0].url }}">{{ item }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
-						{% endfor %}
-					</div>
-				</li>
-				{% endif %}
-				{% endfor %}
+				{%- for nav in site.data.navbar.left -%}
+					{%- if nav.first == nil -%}
+						{% assign link = site.pages | where:'title', nav | default: [url: nav] %}
+						{% include components/navbar_link.html %}
+					{%- else -%}
+						{%- assign list_title = nav | first | first -%}
+						{%- assign list = nav.first[1] -%}
+						<!-- Dropdown -->
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							{{ list_title }}
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								{% for item in list %}
+									{%- assign link = site.pages | where:'title', item | default: nil -%}
+									<a class="dropdown-item{% if page.url == link[0].url %} active{% endif %}" href="{{ link[0].url }}">{{ item }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
+								{% endfor %}
+							</div>
+						</li>
+					{%- endif -%}
+				{%- endfor -%}
 			</ul>
 			<ul class="navbar-nav my-lg-0">
-				{% for nav in site.data.navbar.right %}{% assign link = site.pages | where:'title', nav %}
+				{% for nav in site.data.navbar.right %}
+				{%- assign link = site.pages | where:'title', nav -%}
 				{% include components/navbar_link.html %}
 				{% endfor %}
 			</ul>
