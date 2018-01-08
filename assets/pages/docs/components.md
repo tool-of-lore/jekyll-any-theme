@@ -138,10 +138,19 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 # Tables
 
-| Header | Value |
-|:--|:--|
-| Alpha | `45` |
+Usage:
 
+```md
+| Header | Value |
+|:------ |:----- |
+| Alpha  | `45`  |
+```
+
+Render:
+
+| Header | Value |
+|:------ |:----- |
+| Alpha  | `45`  |
 
 # Alerts
 
@@ -158,3 +167,24 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
   {%- assign md = "Alert `.alert-" | append: alert_color | append: "` with [link](#)" -%}
   {%- include components/alert.html markdown=md type=alert_color -%}
 {%- endfor -%}
+
+# Blockquote
+
+Usage:
+
+```liquid
+{% raw %}{% include components/blockquote.html text="Text in markdown" author="Author name" source="Source" %}{% endraw %}
+```
+
+HTML:
+
+```html
+<blockquote class="blockquote">
+  Text markdownified
+  <footer>Author name <cite title="Source">Source</cite></footer>
+</blockquote>
+```
+
+Render:
+
+{% include components/blockquote.html text="Lo spettro dello squillo di una tromba" author="Philip Josè Farmer" source="Fabbricante di universi" %}

@@ -6,7 +6,6 @@
 
 // Font size
 $font-size-base: 19px
-$code-font-size: 80%
 
 // Base font family
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500")
@@ -55,47 +54,44 @@ $font-family-headings-header: $font-family-headings
 @import "bootstrap/utilities"
 @import "bootstrap/print"
 
+// PALETTE
+
+// Background frame color.
+// Used in: html and footer nav
+$bg-frame: $gray-200
+// use extending his class
+.bg-frame
+  background-color: $bg-frame
+
+// MIXINS
+
 // Headings mixin
+ Example:
  @include headings(1,6,':first-child','main > ')
- content
- main > h1:first-child, main > .h1:first-child
- content
+  ...
+ Render:
+ main > h1:first-child, main > .h2:first-child, ...
+  ...
 @mixin headings($from: 1, $to: 6, $condition: '', $prescope: '')
   @for $i from $from through $to
     #{$prescope}h#{$i}#{$condition}, #{$prescope}.h#{$i}#{$condition}
       @content
 
-// html color
-$bg-frame: $gray-200
-
-// code background color
-$bg-pre: $gray-100
-
-// big spaces
-$big_spacer: ( 6: ($spacer * 2), 7: ($spacer * 2.5), 8: ($spacer * 4), 9: ($spacer * 0.7) )
-
 //
 // CLASSES
 //
 
-// font weights .fw-1, ... .fw-9
+// font weights: .fw-1, ... .fw-9
 @for $weight from 1 through 9
   .fw-#{$weight}
     font-weight: $weight * 100
-
-// Cursor pointer
-.pointer
-  cursor: pointer
-
-// Background frame
-.bg-frame
-  background-color: $bg-frame
 
 // Bottom border only Class
 .bb
   @extend .border, .border-top-0, .border-right-0, .border-left-0
 
 // Big spacers
+$big_spacer: ( 6: ($spacer * 2), 7: ($spacer * 2.5), 8: ($spacer * 4), 9: ($spacer * 0.7) )
 @each $prop, $abbrev in (margin: m, padding: p)
   @each $size, $length in $big_spacer
     .#{$abbrev}-#{$size}
@@ -109,42 +105,147 @@ $big_spacer: ( 6: ($spacer * 2), 7: ($spacer * 2.5), 8: ($spacer * 4), 9: ($spac
     .#{$abbrev}l-#{$size}, .#{$abbrev}x-#{$size}
       #{$prop}-left: $length
 
-// layout
+// HTML
 html
   @extend .bg-frame
 
-// header
+// HEADER
 header
   @extend .mb-0, .jumbotron, .rounded-0, .py-4
-  // Headings
-  @include headings()
-    @extend .text-muted, .mb-0
-    font-family: $font-family-headings-header
-    span
-      @extend .fw-9
-      color: initial
 
-// main
+// MAIN
 main
   @extend .mt-5, .mb-8
   &.container-fluid
     @extend .px-5
-  // Headings
-  @include headings()
-    @extend .mt-5, .mb-3
-  .col
-    @include headings(1, 6, ':first-child')
-      @extend .mt-0
 
-// tables
+// TABLES
 table
   @extend .table
   &:last-of-type
     @extend .mb-0
 
-// collapse
+// HEADINGS
+@include headings()
+  font-family: $font-family-headings
+  letter-spacing: -1px
+// HEADER headings
+header
+  @include headings()
+    @extend .text-muted, .mb-0, .fw-3
+    font-family: $font-family-headings-header
+    span
+      @extend .fw-9
+      color: initial
+// MAIN Headings
+main
+  @include headings()
+    @extend .mt-6, .mb-3
+  .row:first-child .col
+    @include headings(1, 6, ':first-child')
+      @extend .mt-0
+
+// NAVBARS
+// Top main nav
+body > nav,
+header > nav
+  @extend .navbar-dark, .bg-dark
+// Footer nav
+footer nav
+  @extend .navbar-light, .bg-frame
+// Hamburger for mobile
+.navbar-toggler
+  color: $gray-900
+// Space simple text like links
+.navbar-expand-lg
+  .navbar-nav
+    .nav-link,
+    .navbar-text
+      @extend .px-9
+
+// FORMS
+form
+  // Checkbox label with mouse pointer
+  .custom-checkbox,
+  .custom-radio
+    label.custom-control-label
+      cursor: pointer
+
+// COLLAPSE
+// Hide link color on collapse links
 a[data-toggle="collapse"]
   @extend .text-muted
+
+// CODE
+// Fix margings, paddings and background-color
+code
+  padding: 2px 4px
+  background-color: $gray-100
+
+pre.highlight
+  @extend .p-2
+  font-size: 75%
+  letter-spacing: -0.1px
+  border: $border-width solid $border-color
+  border-radius: $border-radius
+  code
+    padding: unset
+
+// CARDS
+// Remove top margins for `last-of-type` objects
+.card
+  p:last-of-type,
+  ul:last-of-type,
+  pre:last-of-type
+    @extend .mb-0
+  .card-title:first-of-type
+    @extend .mt-0
+
+// BLOCKQUOTES
+.blockquote
+  @extend .px-9, .py-1
+  border-left: 2px solid $border-color
+  p
+    @extend .mb-1
+  footer
+    @extend .text-muted, .small
+
+// DROPDOWNS: move caret nearer
+.dropdown-toggle::after
+  margin-left: $caret-width * .3
+  vertical-align: $caret-width * .3
+
+// ALERTS
+// Fix dark link colors inside alerts
+$alert_color_levels: -10 -9 5 6
+// Loop
+@each $color, $value in $theme-colors
+  .alert-#{$color}
+    @include alert-variant(theme-color-level($color, nth($alert_color_levels, 1)), theme-color-level($color, nth($alert_color_levels, 2)), theme-color-level($color, nth($alert_color_levels, 3)))
+    a
+      color: theme-color-level($color, nth($alert_color_levels, 4))
+// extend alert links class
+.alert a
+  @extend .alert-link
+
+// TEMPUS
+.tempus-past,
+.tempus-empty
+  @extend .text-muted
+.tempus-difference
+  @extend .text-muted, .small
+
+// PAGE_INFO
+#pageinfoModal
+  table
+    @extend .table-sm
+    tr:first-child td
+      border-top: 0
+    tr
+      td:first-child
+        @extend .text-right
+      td:last-child
+        @extend .text-muted
 
 // DATE picker
 .datepicker-container
@@ -156,70 +257,6 @@ a[data-toggle="collapse"]
     @extend .py-3
   small
     @extend .form-text, .text-muted, .ml-1
-
-//
-// CODE
-//
-pre
-  @extend .mb-0
-  &.highlight
-    @extend .p-2, .my-2
-    background: $bg-pre
-
-//
-// CARDS
-//
-.card p:last-of-type,
-.card ul:last-of-type,
-.card-title:first-of-type
-  @extend .mt-0
-
-// Dropdowns
-.dropdown-toggle::after
-  margin-left: $caret-width * .3
-  vertical-align: $caret-width * .3
-
-@include headings()
-  font-family: $font-family-headings
-  letter-spacing: -1px
-  @extend .fw-3
-
-// NAVBARS
-body > nav,
-header > nav
-  @extend .navbar-dark, .bg-dark
-  border-bottom: 1px solid $bg-frame
-
-footer nav
-  @extend .navbar-light, .bg-frame
-
-.navbar-toggler
-  color: $gray-900
-
-.navbar-expand-lg
-  .navbar-nav
-    .nav-link,
-    .navbar-text
-      @extend .px-9
-
-// FORMS
-form
-  // Checkbox
-  .custom-checkbox,
-  .custom-radio
-    label.custom-control-label
-      @extend .pointer
-
-// ALERTS
-$alert_color_levels: -10 -9 5 6
-// Loop
-@each $color, $value in $theme-colors
-  .alert-#{$color}
-    @include alert-variant(theme-color-level($color, nth($alert_color_levels, 1)), theme-color-level($color, nth($alert_color_levels, 2)), theme-color-level($color, nth($alert_color_levels, 3)))
-    a
-      color: theme-color-level($color, nth($alert_color_levels, 4))
-.alert a
-  @extend .alert-link
 
 // CODE SYNTAX
 @import "any_theme/syntax_default"

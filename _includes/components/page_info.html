@@ -1,0 +1,40 @@
+<!-- Modal -->
+<div class="modal" id="pageinfoModal" tabindex="-1" role="dialog" aria-labelledby="pageinfoModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Page info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <table>
+        <tr>
+          <td>Layout</td>
+          <td><code>{{ page.layout }}</code></td>
+        </tr>
+        <tr>
+          <td>Path</td>
+          <td>
+            <a href="{{ site.github.repository_url }}/blob/master/docs/{{ page.path }}">{{ page.path }}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Url</td>
+          <td><code>{{ page.permalink }}</code></td>
+        </tr>
+        <tr>
+          <td>Theme</td>
+          <td><code>{{ theme }}</code></td>
+        </tr>
+        <tr>
+          <td>Fluid</td>
+          <td><code>{{ fluid }}</code></td>
+        </tr>
+      </table>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+  </div>
+</div>

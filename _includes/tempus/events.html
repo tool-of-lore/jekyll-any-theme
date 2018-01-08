@@ -1,4 +1,5 @@
-{%- assign now = "now" | date: "%s" -%}
+{%- assign now = "now" | date: "%s" | plus: 0 -%}
+{%- assign format = include.format | default: "%B %-d %A" -%}
 {%- assign day_seconds = 86400 -%}
 {%- assign year_seconds = day_seconds | times: 364 -%}
 {%- comment -%} LOOP CALENDARS {%- endcomment -%}
@@ -7,9 +8,9 @@
 
 **{{ calendar.title }}**
   {%- if include.from or calendar.from or include.past == false -%}
-    {%- assign start = include.from | default: calendar.from | date: "%s" -%}
+    {%- assign start = include.from | default: calendar.from | date: "%s" | plus: 0 -%}
   {%- else -%}
-    {%- assign start = "now" | date: "%s" -%}
+    {%- assign start = "now" | date: "%s" | plus: 0 -%}
   {%- endif -%}
   {%- if include.to or calendar.to -%}
     {%- assign end = include.to | default: calendar.to | date: "%s" -%}
@@ -33,10 +34,10 @@
           {%- assign event_date = e.day | date: "%Y-%m-%d" -%}
           {%- if loop_day == event_date -%}
             {%- assign found = true -%}
-            {%- assign unix = e.day | date: "%s" -%}
+            {%- assign unix = e.day | date: "%s" | plus: 0 -%}
             {%- assign difference = unix | plus: day_seconds | minus: now | divided_by: day_seconds | ceil | times: -1 -%}
             {% if difference == 0 %}{%- assign difference = "today" -%}{% endif %}
-- {{ e.day | date: "%B %-d %A" }}{% if e.title %}: {% if e.color %}<span style="color: {{ e.color }}">{% endif %}**{{ e.title }}**{% endif %} <span class="small text-muted">{{ difference }}
+- {% if unix <= now %}<span class="tempus-past">{% endif %}{{ e.day | date: format }}{% if e.title %}: {% if e.color %}<span style="color: {{ e.color }}">{% endif %}**{{ e.title }}**{% endif %} <span class="tempus-difference">{{ difference }}
           {%- endif -%}
         {%- comment -%} WEEKLY EVENT {%- endcomment -%}
         {%- elsif e.weekly.day -%}
@@ -50,7 +51,7 @@
               {%- assign found = true -%}
               {%- assign difference = day | minus: now | divided_by: day_seconds | ceil | times: -1 -%}
               {% if difference == 0 %}{%- assign difference = "today" -%}{% endif %}
-- {{ day | date: "%B %-d %A" }}{% if e.title %}: {% if e.color %}<span style="color: {{ e.color }}">{% endif %}**{{ e.title }}**{% endif %} <span class="small text-muted">{{ difference }}
+- {% if day <= now %}<span class="tempus-past">{% endif %}{{ day | date: format }}{% if e.title %}: {% if e.color %}<span style="color: {{ e.color }}">{% endif %}**{{ e.title }}**{% endif %} <span class="tempus-difference">{{ difference }}
             {%- endif -%}
           {%- endfor -%}
         {%- endif -%}
@@ -58,7 +59,7 @@
     {%- endfor -%}
     {%- comment -%} SHOW EMPTY DAYS {%- endcomment -%}
     {% if include.empty and found == false %}
-- <span class="text-muted">{{ day | date: "%B %-d %A" }}
+- <span class="tempus-empty">{{ day | date: format }}
     {% endif %}
   {%- endfor -%}
 {%- endif -%}

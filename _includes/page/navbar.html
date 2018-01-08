@@ -8,7 +8,7 @@
 		<div class="collapse navbar-collapse" id="navbarHeader">
 			<ul class="navbar-nav mr-auto">
 				{% for nav in site.data.navbar.left %}{% if nav.first == nil %}{% assign link = site.pages | where:'title', nav | default: [url: nav] %}
-				{% include page/navbar_link.html %}{% else %}
+				{% include components/navbar_link.html %}{% else %}
 				{% assign list_title = nav | first | first %}{% assign list = nav.first[1] %}
 				<!-- Dropdown -->
 				<li class="nav-item dropdown">
@@ -26,7 +26,7 @@
 			</ul>
 			<ul class="navbar-nav my-lg-0">
 				{% for nav in site.data.navbar.right %}{% assign link = site.pages | where:'title', nav %}
-				{% include page/navbar_link.html %}
+				{% include components/navbar_link.html %}
 				{% endfor %}
 			</ul>
 		</div>
