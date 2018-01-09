@@ -235,6 +235,7 @@ $alert_color_levels: -10 -9 5 6
     @include alert-variant(theme-color-level($color, nth($alert_color_levels, 1)), theme-color-level($color, nth($alert_color_levels, 2)), theme-color-level($color, nth($alert_color_levels, 3)))
     a
       color: theme-color-level($color, nth($alert_color_levels, 4))
+
 // extend alert links class
 .alert a
   @extend .alert-link

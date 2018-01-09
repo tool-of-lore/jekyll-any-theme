@@ -141,7 +141,6 @@ header
 
 // Font-Weight for light foreground
 main p,
-.alert,
 .modal-body,
 .table,
 code
@@ -259,13 +258,22 @@ pre.highlight
 
 // ALERTS
 // Fix dark link colors inside alerts
-$alert_color_levels: 5 -2 -8 -3
+$alert_color_levels: 5 2 -11 -5
 // Loop
 @each $color, $value in $theme-colors
   .alert-#{$color}
-    @include alert-variant(theme-color-level($color, nth($alert_color_levels, 1)), theme-color-level($color, nth($alert_color_levels, 2)), theme-color-level($color, nth($alert_color_levels, 3)))
+    $bg: theme-color-level($color, nth($alert_color_levels, 1))
+    $bd: theme-color-level($color, nth($alert_color_levels, 2))
+    $co: theme-color-level($color, nth($alert_color_levels, 3))
+    background: $bg linear-gradient(180deg, mix($body-bg, $bg, 15%), $bg) repeat-x
+    border-color: $bd
+    color: $co
     a
       color: theme-color-level($color, nth($alert_color_levels, 4))
+  .btn-#{$color}
+    @include button-variant(theme-color-level($color, nth($alert_color_levels, 1)),theme-color-level($color, nth($alert_color_levels, 1)))
+    color: $gray-100
+
 // extend alert links class
 .alert a
   @extend .alert-link
