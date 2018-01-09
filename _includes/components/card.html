@@ -8,7 +8,7 @@ Return HTML markup for a card, optional parameters are `header`, `title`, `text`
 ```
 
 ```liquid
-{% raw %}{% include components/card.html title=title header=header text=text footer=footer classes=classes %}{% endraw %}
+{% raw %}{% include components/card.html title=title header=header body=text footer=footer classes=classes %}{% endraw %}
 ```
 
 - **Return**
@@ -20,7 +20,7 @@ Return HTML markup for a card, optional parameters are `header`, `title`, `text`
   </div>
   <div class="card-body">
     <h4 class="card-title">{% raw %}{{ include.title }}{% endraw %}</h4>
-    {% raw %}{{ include.text | strip | markdownify }}{% endraw %}
+    {% raw %}{{ include.body | strip | markdownify }}{% endraw %}
   </div>
   <div class="card-footer">
     {% raw %}{{ include.footer | strip | markdownify }}{% endraw %}
@@ -42,7 +42,7 @@ Return HTML markup for a card, optional parameters are `header`, `title`, `text`
 - **Optional:** yes
 - **Description:** The card title inside `.card-body`
 
-#### `text`
+#### `body`
 
 - **Type:** markdown
 - **Optional:** yes
@@ -72,11 +72,13 @@ Return HTML markup for a card, optional parameters are `header`, `title`, `text`
   <img class="card-img-top" src="{{ include.image }}" alt="Card image cap">{% endif %}{% if include.header %}
   <div class="card-header">
     {{ include.header }}
-  </div>{% endif %}
+  </div>{% endif %}{% if include.before_body %}
+  {{ include.before_body | strip | markdownify }}{% endif %}
   <div class="card-body">{% if include.title %}
-    <h4 class="card-title">{{ include.title }}</h4>{% endif %}{% if include.text %}
-    {{ include.text | strip | markdownify }}{% endif %}
-  </div>{% if include.footer %}
+    <h4 class="card-title">{{ include.title }}</h4>{% endif %}{% if include.body %}
+    {{ include.body | strip | markdownify }}{% endif %}
+  </div>{% if include.after_body %}
+  {{ include.after_body | strip | markdownify }}{% endif %}{% if include.footer %}
   <div class="card-footer">
   {{ include.footer | strip | markdownify }}
   </div>{% endif %}

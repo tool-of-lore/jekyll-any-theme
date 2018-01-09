@@ -1,12 +1,14 @@
 left:
   - Home
   - Docs:
-    - Components
     - Tempus
   - Customize:
     - Css
   - Themes:
     - Bootstrap
+    - Minimal
+    - Mini Dark
+    - Light
     - Dark
   - About
 right:

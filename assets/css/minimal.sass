@@ -1,0 +1,123 @@
+---
+---
+// font
+$font-size-base: 1.1rem
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
+$font-family-serif: Georgia, Times, "Times New Roman", serif
+$font-family-headings-header: $font-family-serif
+// colors
+$link-color: blue
+$link-hover-color: dodgerblue
+
+/*!
+ * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "bootstrap/functions"
+@import "bootstrap/variables"
+@import "bootstrap/mixins"
+// @import "bootstrap/root"
+@import "bootstrap/reboot"
+@import "bootstrap/type"
+@import "bootstrap/images"
+@import "bootstrap/code"
+@import "bootstrap/grid"
+@import "bootstrap/tables"
+@import "bootstrap/forms"
+@import "bootstrap/buttons"
+@import "bootstrap/transitions"
+@import "bootstrap/dropdown"
+@import "bootstrap/button-group"
+@import "bootstrap/input-group"
+@import "bootstrap/custom-forms"
+@import "bootstrap/nav"
+@import "bootstrap/navbar"
+@import "bootstrap/card"
+@import "bootstrap/breadcrumb"
+@import "bootstrap/pagination"
+@import "bootstrap/badge"
+@import "bootstrap/jumbotron"
+@import "bootstrap/alert"
+@import "bootstrap/progress"
+@import "bootstrap/media"
+@import "bootstrap/list-group"
+@import "bootstrap/close"
+@import "bootstrap/modal"
+@import "bootstrap/tooltip"
+@import "bootstrap/popover"
+@import "bootstrap/carousel"
+@import "bootstrap/utilities"
+@import "bootstrap/print"
+
+//
+// Headings
+//
+@mixin headings($from: 1, $to: 6, $condition: '', $prescope: '')
+  @for $i from $from through $to
+    #{$prescope}h#{$i}#{$condition}, #{$prescope}.h#{$i}#{$condition}
+      @content
+
+$font-family-headings: $font-family-base !default
+
+// set font family
+@include headings()
+  font-family: $font-family-headings
+
+$font-family-headings-header: $font-family-base !default
+
+// HEADER
+header
+  @extend .pt-4
+  // Set headings font-family
+  @include headings()
+    font-family: $font-family-headings-header
+
+// NAVBAR
+.navbar-toggler
+  color: $navbar-light-color
+  border-color: $navbar-light-toggler-border-color
+
+.navbar-toggler-icon
+  background-image: $navbar-light-toggler-icon-bg
+
+// MAIN Headings
+main
+  @extend .py-5
+  @include headings()
+    @extend .mt-3
+  .row:first-child .col
+    @include headings(1, 6, ':first-child')
+      @extend .mt-0
+
+//
+// Tables
+//
+table
+  @extend .table
+
+// Blockquote footer
+blockquote
+  p:last-of-type
+    @extend .mb-0
+  footer
+    @extend .blockquote-footer
+
+// CARDS
+// Remove top margins for `last-of-type` objects
+.card
+  p:last-of-type,
+  ul:last-of-type,
+  pre:last-of-type
+    @extend .mb-0
+  .card-title:first-of-type
+    @extend .mt-0
+  // ul
+  //   @extend .list-group, .list-group-flush
+  //   li
+  //     @extend .list-group-item
+
+// CODE HIGHLIGHT
+@import "any_theme/syntax_default"

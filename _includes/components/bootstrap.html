@@ -1,8 +1,12 @@
----
-title: Components
-description: Components
-permalink: docs/components/
----
+# {{ page.title }} / {{ page.theme }}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+<!--column-->
+
+{% include components/card.html title="Card title" header="Card header" body="Card text" footer="Card footer" %}
+
+<!--row-->
 
 # Table of contents
 
@@ -108,7 +112,20 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 # Cards
 
-{% include components/card.html title="Card title" header="Card header" text="Card text" footer="Card footer" classes="border-primary" image="http://spacenews.com/wp-content/uploads/2017/03/f9-ses10-launch1.jpg" %}
+<!--row-->
+
+{% include components/card.html title="Card title" header="Card header" body="`text-center`" footer="Card footer" classes="text-center" image="http://spacenews.com/wp-content/uploads/2017/03/f9-ses10-launch1.jpg" %}
+
+<!--column-->
+
+{%- capture list -%}
+- Cras justo odio
+- Dapibus ac facilisis in
+- Vestibulum at eros
+{%- endcapture -%}
+{% include components/card.html title="Card title" after_body=list body="`bg-light`" classes="bg-light" %}
+
+<!--row-->
 
 # Buttons
 
@@ -151,6 +168,28 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
   {%- assign body = "Alert <code>.alert-" | append: alert_color | append: "</code> with <a href='#'>link</a>" -%}
   {%- include components/alert.html body=body type=alert_color -%}
 {%- endfor -%}
+
+# Badges
+
+```html
+<span class="badge badge-primary">Primary</span>
+<span class="badge badge-secondary">Secondary</span>
+<span class="badge badge-success">Success</span>
+<span class="badge badge-danger">Danger</span>
+<span class="badge badge-warning">Warning</span>
+<span class="badge badge-info">Info</span>
+<span class="badge badge-light">Light</span>
+<span class="badge badge-dark">Dark</span>
+```
+
+<span class="badge badge-primary">Primary</span>
+<span class="badge badge-secondary">Secondary</span>
+<span class="badge badge-success">Success</span>
+<span class="badge badge-danger">Danger</span>
+<span class="badge badge-warning">Warning</span>
+<span class="badge badge-info">Info</span>
+<span class="badge badge-light">Light</span>
+<span class="badge badge-dark">Dark</span>
 
 # Blockquote
 

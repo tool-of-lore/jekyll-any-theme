@@ -16,6 +16,7 @@ $bg-frame: darken($gray-900,2%)
 // DARK
 $body-bg: $bg-frame
 $body-color: $gray-200
+$text-muted: $gray-400
 // Cards
 $card-bg: $body-bg
 $card-border-color: rgba($white, .125)
@@ -23,8 +24,13 @@ $card-border-color: rgba($white, .125)
 $card-cap-bg: rgba($white, .03)
 // Header
 $jumbotron-bg: theme-color("dark")
-// dropdown
-$dropdown-link-hover-bg: $gray-200
+// Dropdown
+$dropdown-bg: $gray-800
+$dropdown-border-color: rgba($white, .15)
+
+$dropdown-link-color: $gray-200
+$dropdown-link-hover-color: $gray-100
+$dropdown-link-hover-bg: $gray-900 
 // MODALS
 $modal-content-bg: $bg-frame
 $modal-content-border-color: rgba($white, .2)
@@ -40,7 +46,7 @@ $border-color: $gray-800
 $code-color: $gray-400
 
 // Font size
-$font-size-base: 19px
+$font-size-base: 1.1rem
 
 // Base font family
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500")
@@ -185,10 +191,12 @@ main
 // Top main nav
 body > nav,
 header > nav
-  @extend .navbar-light, .bg-light
+  @extend .navbar-dark, .fw-3
+  background-color: $gray-900
 // Footer nav
 footer nav
   @extend .navbar-dark, .bg-dark, .fw-3
+
 // Hamburger for mobile
 .navbar-toggler
   color: $gray-900
