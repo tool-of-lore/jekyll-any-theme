@@ -1,0 +1,20 @@
+// HEADINGS
+
+// Mixin with pre-scope and condition
+@mixin headings($from: 1, $to: 6, $condition: '', $prescope: '')
+  @for $i from $from through $to
+    #{$prescope}h#{$i}#{$condition}, #{$prescope}.h#{$i}#{$condition}
+      @content
+
+// Font family
+// Set !default family
+$font-family-headings: $font-family-base !default
+@include headings()
+  font-family: $font-family-headings
+
+// <header> headings
+// Set !default family
+$font-family-headings-header: $font-family-base !default
+header
+  @include headings()
+    font-family: $font-family-headings-header

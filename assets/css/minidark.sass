@@ -24,6 +24,14 @@ $card-bg: $body-bg
 // modals
 $modal-header-border-color: lighten(black,20%)
 
+// dropdowns
+$dropdown-link-color: darken(white,20%)
+$dropdown-link-hover-color: $dropdown-link-color
+$dropdown-link-hover-bg: lighten(black,20%)
+
+// kbd
+$kbd-color: white
+
 // links
 $link-color: dodgerblue
 $link-hover-color: white
@@ -135,19 +143,35 @@ blockquote
   footer
     @extend .blockquote-footer
 
+// FORMS
+form
+  // Checkbox label with mouse pointer
+  .custom-checkbox,
+  .custom-radio
+    label.custom-control-label
+      cursor: pointer
+
 // CARDS
 // Remove top margins for `last-of-type` objects
 .card
-  p:last-of-type,
-  ul:last-of-type,
-  pre:last-of-type
-    @extend .mb-0
   .card-title:first-of-type
     @extend .mt-0
-  // ul
-  //   @extend .list-group, .list-group-flush
-  //   li
-  //     @extend .list-group-item
+  .card-body
+    p:last-of-type,
+    ul:last-of-type,
+    pre:last-of-type
+      @extend .mb-0
+    & ~ ul
+      @extend .list-group, .list-group-flush
+      li
+        @extend .list-group-item
+  .card-footer
+    p:last-of-type
+      @extend .mb-0
 
-// CODE HIGHLIGHT
+// CODE
+pre.highlight
+  @extend .p-2
+
+// SYNTAX HIGHLIGHT
 @import "any_theme/syntax_dark"

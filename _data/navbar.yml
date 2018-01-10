@@ -6,6 +6,7 @@ left:
     - Css
   - Themes:
     - Bootstrap
+    - Base Light Sans
     - Minimal
     - Mini Dark
     - Light

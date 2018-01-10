@@ -123,7 +123,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 - Dapibus ac facilisis in
 - Vestibulum at eros
 {%- endcapture -%}
-{% include components/card.html title="Card title" after_body=list body="`bg-light`" classes="bg-light" %}
+{% include components/card.html after_body=list before_body=list body="list `after_body` and `before_body`" %}
 
 <!--row-->
 

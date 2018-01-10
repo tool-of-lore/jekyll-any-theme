@@ -1,13 +1,42 @@
 ---
 ---
-// font
-$font-size-base: 1.1rem
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
-$font-family-serif: Georgia, Times, "Times New Roman", serif
-$font-family-headings-header: $font-family-serif
-// colors
+
+// VARIABILES
+// ----------------------------
+
+// COLORS
+// ----------------------------
+
+// Base
+// $black: white
+// $white: black
+
+// Body
+// $body-bg: lighten(black,6%)
+// $body-color: darken(white,5%)
+
+// Links
 $link-color: blue
 $link-hover-color: dodgerblue
+
+// Kbd
+// $kbd-color: white
+
+// FONTS
+// ----------------------------
+
+// Size
+$font-size-base: 1.1rem
+$code-font-size: 80%
+
+// Font family
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
+$font-family-serif: Georgia, Times, "Times New Roman", serif
+// $font-family-headings-header: $font-family-serif
+
+// Weights
+// $font-weight-base: 300
+// $headings-font-weight: 400
 
 /*!
  * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
@@ -52,88 +81,35 @@ $link-hover-color: dodgerblue
 @import "bootstrap/utilities"
 @import "bootstrap/print"
 
-//
-// Headings
-//
-@mixin headings($from: 1, $to: 6, $condition: '', $prescope: '')
-  @for $i from $from through $to
-    #{$prescope}h#{$i}#{$condition}, #{$prescope}.h#{$i}#{$condition}
-      @content
-
-$font-family-headings: $font-family-base !default
-
-// set font family
-@include headings()
-  font-family: $font-family-headings
-
-$font-family-headings-header: $font-family-base !default
+// ANY THEME IMPORTS
+// maybe only
+// - mixins
+// - bootstrap corrections
+// - hard code
+// - syntax
+@import "any_theme/headings"
+@import "any_theme/navbar"
+@import "any_theme/forms"
+@import "any_theme/tables"
+@import "any_theme/blockquotes"
+@import "any_theme/cards"
+@import "any_theme/syntax_default"
 
 // HEADER
 header
   @extend .pt-4
-  // Set headings font-family
-  @include headings()
-    font-family: $font-family-headings-header
 
-// NAVBAR
-.navbar-toggler
-  color: $navbar-light-color
-  border-color: $navbar-light-toggler-border-color
-
-.navbar-toggler-icon
-  background-image: $navbar-light-toggler-icon-bg
-
-// MAIN Headings
+// MAIN
 main
   @extend .py-5
+  // Headings
   @include headings()
     @extend .mt-3
   .row:first-child .col
     @include headings(1, 6, ':first-child')
       @extend .mt-0
 
-// FORMS
-form
-  // Checkbox label with mouse pointer
-  .custom-checkbox,
-  .custom-radio
-    label.custom-control-label
-      cursor: pointer
-
-//
-// Tables
-//
-table
-  @extend .table
-
-// Blockquote footer
-blockquote
-  p:last-of-type
-    @extend .mb-0
-  footer
-    @extend .blockquote-footer
-
-// CARDS
-// Remove top margins for `last-of-type` objects
-.card
-  .card-title:first-of-type
-    @extend .mt-0
-  .card-body,
-    p:last-of-type,
-    ul:last-of-type,
-    pre:last-of-type
-      @extend .mb-0
-    & ~ ul
-      @extend .list-group, .list-group-flush
-      li
-        @extend .list-group-item
-  .card-footer
-    p:last-of-type
-      @extend .mb-0
-
-// CODE
+// CODE HIGHLIGHT
 pre.highlight
-  @extend .p-2
-
-// SYNTAX HIGHLIGHT
-@import "any_theme/syntax_default"
+  @extend .px-2, .py-1
+  background: $gray-100
