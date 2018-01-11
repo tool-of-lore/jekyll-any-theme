@@ -4,13 +4,7 @@ left:
     - Tempus
   - Customize:
     - Css
-  - Themes:
-    - Bootstrap
-    - Base Light Sans
-    - Minimal
-    - Mini Dark
-    - Light
-    - Dark
+  - Themes
   - About
 right:
   - Login

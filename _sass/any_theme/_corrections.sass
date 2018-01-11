@@ -1,0 +1,64 @@
+// TABLES
+// Set right table class
+table
+  @extend .table
+
+// NAVBAR
+// Set default to `.navbar-light`
+.navbar-nav .nav-link.active
+  color: $navbar-light-active-color
+.navbar-toggler
+  color: $navbar-light-color
+  border-color: $navbar-light-toggler-border-color
+.navbar-toggler-icon
+  background-image: $navbar-light-toggler-icon-bg
+
+// DROPDOWNS
+// move caret closer
+.dropdown-toggle::after
+  margin-left: $caret-width * .3
+  vertical-align: $caret-width * .3
+
+// FORMS
+form
+  // Set mouse pointer on checkbox and radio label
+  .custom-checkbox,
+  .custom-radio
+    label.custom-control-label
+      cursor: pointer
+
+// CARDS
+.card
+  // Remove top margin for top titles
+  .card-title:first-of-type
+    @extend .mt-0
+  // Remove bottom margin for bottom elements
+  .card-body
+    p,
+    ul,
+    pre,
+    table
+      &:last-of-type
+        @extend .mb-0
+    // Force lists in .list-groups after body
+    & ~ ul
+      @extend .list-group, .list-group-flush
+      li
+        @extend .list-group-item
+  .card-footer
+    p:last-of-type
+      @extend .mb-0
+  // Force lists in .list-groups before body
+  & > ul
+    @extend .list-group, .list-group-flush
+    li
+      @extend .list-group-item
+
+// BLOCKQUOTE
+blockquote
+  // Reset bottom margin
+  p:last-of-type
+    @extend .mb-0
+  // Set footer blockquote class
+  footer
+    @extend .blockquote-footer

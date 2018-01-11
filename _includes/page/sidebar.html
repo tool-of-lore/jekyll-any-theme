@@ -1,0 +1,6 @@
+<div class="col-3" id="sidebar">
+  {%- for inc in sidebar.includes -%}
+    {%- capture to_md -%}{% include {{ inc }} %}{%- endcapture -%}
+    {{ to_md | markdownify }}
+  {%- endfor -%}
+</div>

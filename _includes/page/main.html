@@ -1,4 +1,12 @@
 <main class="container{{ fluid }}">
+  {% if sidebar.side == 'left' %}
+  <div class="row">
+    {% include page/sidebar.html %}
+    <div class="col">
+  {% elsif sidebar.side == 'right' %}
+  <div class="row">
+    <div class="col">
+  {% endif %}
   {% assign rows = content | split: "<!--row-->" %}
   {%- for row in rows -%}
   <div class="row">
@@ -10,5 +18,14 @@
       {{ column_live[forloop.index0] | strip }}
     </div>
     {% endfor %}
-  </div>{% endfor %}
+  </div>
+  {%- endfor -%}
+  {% if sidebar.side == 'right' %}
+    </div>
+    {% include page/sidebar.html %}
+  </div>
+  {% elsif sidebar.side == 'left' %}
+    </div>
+  </div>
+  {% endif %}
 </main>

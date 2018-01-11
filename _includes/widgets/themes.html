@@ -1,0 +1,11 @@
+<div class="card widget-themes">
+  <div class="card-header">
+    <strong>Themes switcher</strong>
+  </div>
+  <ul class="list-group list-group-flush">
+    {%- for t in page.themes -%}
+    {%- assign t_slug = t | slugify | replace: '-', '_' -%}
+    <a href="#" class="list-group-item list-group-item-action{% if t_slug == theme %} active{% endif %}" data-theme="{{ t_slug }}">{{ t }}</a>
+    {%- endfor -%}
+  </ul>
+</div>

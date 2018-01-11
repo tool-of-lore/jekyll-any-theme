@@ -15,7 +15,7 @@ if $('#toc-collapseOne .card-body').length and $('#markdown-toc').length
 $ '[data-toggle*=tooltip]'
 	.tooltip()
 
-# Page info modal
+# Show page_info modal
 $ 'a[href="Page info"]'
 	.on "click", (e) ->
 		e.preventDefault()
@@ -24,5 +24,16 @@ $ 'a[href="Page info"]'
 
 # Active navbar link on dropdowns
 $('li.dropdown').each ->
-	if $(@).find('div.dropdown-menu a.active').length then $(@).addClass 'active'
+	if $(@).find('div.dropdown-menu a.active').length then $(@).find('a').addClass 'active'
+	true
+
+# Theme switcher
+$('.widget-themes a').each ->
+	$(@).on "click", (e) ->
+		e.preventDefault()
+		$('#main-css').attr 'href', "/assets/css/#{$(e.target).data('theme')}.css"
+		$('.widget-themes a').removeClass 'active'
+		$(e.target).addClass 'active'
+		$('#theme-value').text($(e.target).data('theme'))
+		true
 	true

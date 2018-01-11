@@ -1,0 +1,125 @@
+---
+---
+
+// VARIABILES
+// ----------------------------
+
+// COLORS
+// ----------------------------
+
+// Base
+// $black: white
+// $white: black
+
+// Body
+// $body-bg: lighten(black,6%)
+// $body-color: darken(white,5%)
+
+// Links
+$link-color: blue
+$link-hover-color: dodgerblue
+
+// Kbd
+// $kbd-color: white
+
+// FONTS
+// ----------------------------
+
+// Size
+$font-size-base: 1.1rem
+$code-font-size: 80%
+
+// Font family
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
+$font-family-serif: Georgia, Times, "Times New Roman", serif
+$font-family-base: $font-family-serif
+// $font-family-headings-header: $font-family-serif
+
+// Weights
+// $font-weight-base: 300
+// $headings-font-weight: 400
+
+/*!
+ * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "bootstrap/functions"
+@import "bootstrap/variables"
+@import "bootstrap/mixins"
+// @import "bootstrap/root"
+@import "bootstrap/reboot"
+@import "bootstrap/type"
+@import "bootstrap/images"
+@import "bootstrap/code"
+@import "bootstrap/grid"
+@import "bootstrap/tables"
+@import "bootstrap/forms"
+@import "bootstrap/buttons"
+@import "bootstrap/transitions"
+@import "bootstrap/dropdown"
+@import "bootstrap/button-group"
+@import "bootstrap/input-group"
+@import "bootstrap/custom-forms"
+@import "bootstrap/nav"
+@import "bootstrap/navbar"
+@import "bootstrap/card"
+@import "bootstrap/breadcrumb"
+@import "bootstrap/pagination"
+@import "bootstrap/badge"
+@import "bootstrap/jumbotron"
+@import "bootstrap/alert"
+@import "bootstrap/progress"
+@import "bootstrap/media"
+@import "bootstrap/list-group"
+@import "bootstrap/close"
+@import "bootstrap/modal"
+@import "bootstrap/tooltip"
+@import "bootstrap/popover"
+@import "bootstrap/carousel"
+@import "bootstrap/utilities"
+@import "bootstrap/print"
+
+// ANY THEME IMPORTS
+// maybe only
+// - mixins
+// - bootstrap corrections
+// - hard code
+// - syntax
+
+@import "any_theme/mixins"
+@import "any_theme/corrections"
+@import "any_theme/headings"
+@import "any_theme/syntax_default"
+
+// Widgets
+@import "any_theme/tempus"
+@import "any_theme/themes"
+
+// HEADER
+header
+  @extend .pt-4
+
+// MAIN
+main
+  // Add vertical padding
+  @extend .py-5
+  // Headings
+  // Set a top margin
+  @include headings()
+    @extend .mt-3
+  // Reset to margin for first child heaings in the first row columns
+  .row:first-child div[class*="col"]
+    @include headings(1, 6, ':first-child')
+      @extend .mt-0
+
+// CODE HIGHLIGHT
+// Set padding and background
+pre.highlight
+  @extend .px-2, .py-1
+  background: $gray-100
+  // Prevent long code to break bootstrapper grid:
+  // Fix user agent stylesheet `white-space: pre`
+  white-space: pre-wrap

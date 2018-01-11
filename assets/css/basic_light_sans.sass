@@ -32,6 +32,7 @@ $code-font-size: 80%
 // Font family
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
 $font-family-serif: Georgia, Times, "Times New Roman", serif
+// $font-family-base: $font-family-sans-serif
 // $font-family-headings-header: $font-family-serif
 
 // Weights
@@ -87,13 +88,15 @@ $font-family-serif: Georgia, Times, "Times New Roman", serif
 // - bootstrap corrections
 // - hard code
 // - syntax
+
+@import "any_theme/mixins"
+@import "any_theme/corrections"
 @import "any_theme/headings"
-@import "any_theme/navbar"
-@import "any_theme/forms"
-@import "any_theme/tables"
-@import "any_theme/blockquotes"
-@import "any_theme/cards"
 @import "any_theme/syntax_default"
+
+// Widgets
+@import "any_theme/tempus"
+@import "any_theme/themes"
 
 // HEADER
 header
@@ -101,15 +104,22 @@ header
 
 // MAIN
 main
+  // Add vertical padding
   @extend .py-5
   // Headings
+  // Set a top margin
   @include headings()
     @extend .mt-3
-  .row:first-child .col
+  // Reset to margin for first child heaings in the first row columns
+  .row:first-child div[class*="col"]
     @include headings(1, 6, ':first-child')
       @extend .mt-0
 
 // CODE HIGHLIGHT
+// Set padding and background
 pre.highlight
   @extend .px-2, .py-1
   background: $gray-100
+  // Prevent long code to break bootstrapper grid:
+  // Fix user agent stylesheet `white-space: pre`
+  white-space: pre-wrap

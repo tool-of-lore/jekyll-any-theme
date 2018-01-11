@@ -13,13 +13,14 @@
 						{% include components/navbar_link.html %}
 					{%- else -%}
 						{%- assign list_title = nav | first | first -%}
+						{%- assign list_title_slug = list_title | slugify -%}
 						{%- assign list = nav.first[1] -%}
 						<!-- Dropdown -->
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="{{ list_title_slug }}_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							{{ list_title }}
 							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<div class="dropdown-menu" aria-labelledby="{{ list_title_slug }}_dropdown">
 								{% for item in list %}
 									{%- assign link = site.pages | where:'title', item | default: nil -%}
 									<a class="dropdown-item{% if page.url == link[0].url %} active{% endif %}" href="{{ link[0].url }}">{{ item }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>

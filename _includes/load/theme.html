@@ -2,6 +2,8 @@
   {%- assign theme = collection.theme -%}
 {%- elsif page.theme -%}
   {%- assign theme = page.theme -%}
+{%- elsif site.theme -%}
+  {%- assign theme = site.theme -%}
 {%- else -%}
-  {%- assign theme = 'any-theme' -%}
+  {%- assign theme = 'basic_light_sans' -%}
 {%- endif -%}
