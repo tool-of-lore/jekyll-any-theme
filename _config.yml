@@ -19,3 +19,5 @@ defaults:
 # theme: basic_light_sans
 
 emptyArray: []
+
+exclude: ["assets/css_no/"]

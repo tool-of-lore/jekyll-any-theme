@@ -1,0 +1,114 @@
+---
+---
+
+// VARIABILES
+// ----------------------------
+
+// COLORS
+// ----------------------------
+
+// Base
+$black: white
+$white: black
+
+// Body
+$body-bg: lighten(black,6%)
+$body-color: darken(white,5%)
+
+// Grays inverted
+$gray-100: #212529
+$gray-200: #343a40
+$gray-300: #495057
+$gray-400: #868e96
+$gray-500: #adb5bd
+$gray-600: #ced4da
+$gray-700: #dee2e6
+$gray-800: #e9ecef
+$gray-900: #f8f9fa
+
+// Colors darkened
+$blue:    darken(#007bff,15%)
+$indigo:  darken(#6610f2,15%)
+$purple:  darken(#6f42c1,15%)
+$pink:    darken(#e83e8c,15%)
+$red:     darken(#dc3545,15%)
+$orange:  darken(#fd7e14,15%)
+$yellow:  darken(#ffc107,15%)
+$green:   darken(#28a745,15%)
+$teal:    darken(#20c997,15%)
+$cyan:    darken(#17a2b8,15%)
+
+// Links
+$link-color: #007bff
+$link-hover-color: $gray-400
+
+$code-color: lighten($pink,25%)
+
+// YIQ contrast function
+$yiq-text-dark: $gray-100
+$yiq-text-light: $black
+
+// MODAL
+$modal-backdrop-opacity: 0.2
+
+// CARDS
+$card-cap-bg: rgba($black, .1)
+
+// FONTS
+// ----------------------------
+
+// Size
+$font-size-base: 1.1rem
+$code-font-size: 80%
+
+// Font family
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
+$font-family-serif: Georgia, Times, "Times New Roman", serif
+// $font-family-base: $font-family-sans-serif
+// $font-family-headings-header: $font-family-serif
+
+// Weights
+// $font-weight-base: 300
+$headings-font-weight: 400
+
+@import "any_theme"
+@import "any_theme/syntax_dark"
+
+// HEADER
+header
+  @extend .pt-4
+
+// MAIN
+main
+  // Add vertical padding
+  @extend .py-5
+  // Headings
+  // Set a top margin
+  @include headings()
+    @extend .mt-3
+  // Reset to margin for first child heaings in the first row columns
+  .row:first-child div[class*="col"]
+    @include headings(1, 6, ':first-child')
+      @extend .mt-0
+
+// ALERTS
+@each $color, $value in $theme-colors
+  .alert-#{$color}
+    color: color-yiq($value)
+    background: darken($value,5%)
+    border-color: $value
+    hr
+      border-top-color: $value
+    a,
+    code
+      opacity: 0.7
+      color: color-yiq($value)
+
+// CODE HIGHLIGHT
+// Set padding and background
+pre.highlight
+  @extend .px-2, .py-1
+  background: lighten(black,8%)
+  // Prevent long code to break bootstrapper grid:
+  // Fix user agent stylesheet `white-space: pre`
+  white-space: pre-wrap

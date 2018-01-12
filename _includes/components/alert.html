@@ -1,7 +1,7 @@
-{% capture api %}
+{%- capture api -%}
 Render an alert. Inputs are `type` (primary, dark, ...), `markdown` (the content).
-{% endcapture %}
+{%- endcapture -%}
 {%- include api/save.html -%}
 <div class="alert{% if include.type %} alert-{{ include.type }}{% endif %}" role="alert">
-{{ include.body }}
+{{ include.body | markdownify | remove: '<p>' |remove: '</p>' }}
 </div>

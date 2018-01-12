@@ -54,6 +54,14 @@ form
     li
       @extend .list-group-item
 
+// ALERTS
+@each $color, $value in $theme-colors
+  .alert-#{$color}
+    a
+      color: theme-color-level($color, 6)
+.alert a
+  @extend .alert-link
+
 // BLOCKQUOTE
 blockquote
   // Reset bottom margin
