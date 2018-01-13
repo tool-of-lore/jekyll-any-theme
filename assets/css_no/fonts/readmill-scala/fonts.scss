@@ -1,0 +1,60 @@
+---
+---
+// http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax
+@font-face {
+  font-family: 'Scala Sans SC';
+  src: url('scalasans-regularsc-webfont.eot');
+  src: url('scalasans-regularsc-webfont.eot?#iefix') format('embedded-opentype'),
+       url('scalasans-regularsc-webfont.woff') format('woff'),
+       url('scalasans-regularsc-webfont.ttf') format('truetype'),
+       url('scalasans-regularsc-webfont.svg#ScalaSansSCRegular') format('svg');
+  font-style: normal;
+  font-weight: normal;
+  // Not currently supported by browsers it would seem.
+  // font-variant: small-caps;
+}
+
+@font-face {
+  font-family: 'Scala';
+  src: url('scala-webfont.eot');
+  src: url('scala-webfont.eot?#iefix') format('embedded-opentype'),
+       url('scala-webfont.woff') format('woff'),
+       url('scala-webfont.ttf') format('truetype'),
+       url('scala-webfont.svg#Scala') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Scala';
+  src: url('scala-italic-webfont.eot');
+  src: url('scala-italic-webfont.eot?#iefix') format('embedded-opentype'),
+       url('scala-italic-webfont.woff') format('woff'),
+       url('scala-italic-webfont.ttf') format('truetype'),
+       url('scala-italic-webfont.svg#ScalaItalic') format('svg');
+  font-style: italic;
+  font-weight: normal;
+}
+
+@mixin ScalaSansSC {
+  font-family: "Scala Sans SC", Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+  text-rendering: optimizeLegibility;
+  // font-variant should work with @font-face but currently browsers seem
+  // to be manually applying the transformation. Which means the fallbacks
+  // will be standard case.
+  // font-variant: small-caps;
+  // Thins the font rendering in Webkit browsers.
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin Scala {
+  font-family: Scala, Georgia, Times, serif;
+  font-variant: normal;
+  text-transform: none;
+}
+
+@mixin ScalaItalic {
+  @include Scala;
+  font-style: italic;
+}

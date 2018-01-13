@@ -1,11 +1,12 @@
 ---
 title: Themes
 description: Theme switcher
-permalink: themes/
+permalink: customize/themes/
 # sidebar:
 #   side: left
 #   includes:
 #     - sidebar/themes.html
+theme: dnd
 themes:
   - Bootstrap
   - Basic Light Sans
@@ -14,7 +15,7 @@ themes:
   - Basic Dark Serif
   - Roboto Light
   - Roboto Dark
-  - D&D
+  - DnD
   - Gurps
 ---
 

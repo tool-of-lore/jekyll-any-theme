@@ -24,7 +24,7 @@ $ 'a[href="Page info"]'
 
 # Active navbar link on dropdowns
 $('li.dropdown').each ->
-	if $(@).find('div.dropdown-menu a.active').length then $(@).find('a').addClass 'active'
+	if $(@).find('div.dropdown-menu a.active').length then $(@).find('> a').addClass 'active'
 	true
 
 # Theme switcher

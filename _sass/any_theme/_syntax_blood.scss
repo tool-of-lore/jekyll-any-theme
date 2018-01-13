@@ -1,0 +1,310 @@
+.highlight .hll {
+  background-color: mix(#ffc,$maroon,40%);
+}
+
+.highlight .c {
+  color: mix(#999,$maroon,40%);
+}
+
+/* Comment */
+.highlight .err {
+  color: mix(#a00,$maroon,40%);
+  background-color: mix(#faa,$maroon,40%);
+}
+
+/* Error */
+.highlight .k {
+  color: mix(#069,$maroon,40%);
+}
+
+/* Keyword */
+.highlight .o {
+  color: mix(#555,$maroon,40%);
+}
+
+/* Operator */
+.highlight .cm {
+  color: mix(#09f,$maroon,40%);
+  font-style: italic;
+}
+
+/* Comment.Multiline */
+.highlight .cp {
+  color: mix(#099,$maroon,40%);
+}
+
+/* Comment.Preproc */
+.highlight .c1 {
+  color: mix(#999,$maroon,40%);
+}
+
+/* Comment.Single */
+.highlight .cs {
+  color: mix(#999,$maroon,40%);
+}
+
+/* Comment.Special */
+.highlight .gd {
+  background-color: mix(#fcc,$maroon,40%);
+  border: 1px solid mix(#c00,$maroon,40%);
+}
+
+/* Generic.Deleted */
+.highlight .ge {
+  font-style: italic;
+}
+
+/* Generic.Emph */
+.highlight .gr {
+  color: mix(#f00,$maroon,40%);
+}
+
+/* Generic.Error */
+.highlight .gh {
+  color: mix(#030,$maroon,40%);
+}
+
+/* Generic.Heading */
+.highlight .gi {
+  background-color: mix(#cfc,$maroon,40%);
+  border: 1px solid mix(#0c0,$maroon,40%);
+}
+
+/* Generic.Inserted */
+.highlight .go {
+  color: mix(#aaa,$maroon,40%);
+}
+
+/* Generic.Output */
+.highlight .gp {
+  color: mix(#009,$maroon,40%);
+}
+
+/* Generic.Prompt */
+/* Generic.Strong */
+.highlight .gu {
+  color: mix(#030,$maroon,40%);
+}
+
+/* Generic.Subheading */
+.highlight .gt {
+  color: mix(#9c6,$maroon,40%);
+}
+
+/* Generic.Traceback */
+.highlight .kc {
+  color: mix(#069,$maroon,40%);
+}
+
+/* Keyword.Constant */
+.highlight .kd {
+  color: mix(#069,$maroon,40%);
+}
+
+/* Keyword.Declaration */
+.highlight .kn {
+  color: mix(#069,$maroon,40%);
+}
+
+/* Keyword.Namespace */
+.highlight .kp {
+  color: mix(#069,$maroon,40%);
+}
+
+/* Keyword.Pseudo */
+.highlight .kr {
+  color: mix(#069,$maroon,40%);
+}
+
+/* Keyword.Reserved */
+.highlight .kt {
+  color: mix(#078,$maroon,40%);
+}
+
+/* Keyword.Type */
+.highlight .m {
+  color: mix(#f60,$maroon,40%);
+}
+
+/* Literal.Number */
+.highlight .s {
+  color: mix(#d44950,$maroon,40%);
+}
+
+/* Literal.String */
+.highlight .na {
+  color: mix(#4f9fcf,$maroon,40%);
+}
+
+/* Name.Attribute */
+.highlight .nb {
+  color: mix(#366,$maroon,40%);
+}
+
+/* Name.Builtin */
+.highlight .nc {
+  color: mix(#0a8,$maroon,40%);
+}
+
+/* Name.Class */
+.highlight .no {
+  color: mix(#360,$maroon,40%);
+}
+
+/* Name.Constant */
+.highlight .nd {
+  color: mix(#99f,$maroon,40%);
+}
+
+/* Name.Decorator */
+.highlight .ni {
+  color: mix(#999,$maroon,40%);
+}
+
+/* Name.Entity */
+.highlight .ne {
+  color: mix(#c00,$maroon,40%);
+}
+
+/* Name.Exception */
+.highlight .nf {
+  color: mix(#c0f,$maroon,40%);
+}
+
+/* Name.Function */
+.highlight .nl {
+  color: mix(#99f,$maroon,40%);
+}
+
+/* Name.Label */
+.highlight .nn {
+  color: mix(#0cf,$maroon,40%);
+}
+
+/* Name.Namespace */
+.highlight .nt {
+  color: mix(#2f6f9f,$maroon,40%);
+}
+
+/* Name.Tag */
+.highlight .nv {
+  color: mix(#033,$maroon,40%);
+}
+
+/* Name.Variable */
+.highlight .ow {
+  color: mix(#000,$maroon,40%);
+}
+
+/* Operator.Word */
+.highlight .w {
+  color: mix(#bbb,$maroon,40%);
+}
+
+/* Text.Whitespace */
+.highlight .mf {
+  color: mix(#f60,$maroon,40%);
+}
+
+/* Literal.Number.Float */
+.highlight .mh {
+  color: mix(#f60,$maroon,40%);
+}
+
+/* Literal.Number.Hex */
+.highlight .mi {
+  color: mix(#f60,$maroon,40%);
+}
+
+/* Literal.Number.Integer */
+.highlight .mo {
+  color: mix(#f60,$maroon,40%);
+}
+
+/* Literal.Number.Oct */
+.highlight .sb {
+  color: mix(#c30,$maroon,40%);
+}
+
+/* Literal.String.Backtick */
+.highlight .sc {
+  color: mix(#c30,$maroon,40%);
+}
+
+/* Literal.String.Char */
+.highlight .sd {
+  color: mix(#c30,$maroon,40%);
+  font-style: italic;
+}
+
+/* Literal.String.Doc */
+.highlight .s2 {
+  color: mix(#c30,$maroon,40%);
+}
+
+/* Literal.String.Double */
+.highlight .se {
+  color: mix(#c30,$maroon,40%);
+}
+
+/* Literal.String.Escape */
+.highlight .sh {
+  color: mix(#c30,$maroon,40%);
+}
+
+/* Literal.String.Heredoc */
+.highlight .si {
+  color: mix(#a00,$maroon,40%);
+}
+
+/* Literal.String.Interpol */
+.highlight .sx {
+  color: mix(#c30,$maroon,40%);
+}
+
+/* Literal.String.Other */
+.highlight .sr {
+  color: mix(#3aa,$maroon,40%);
+}
+
+/* Literal.String.Regex */
+.highlight .s1 {
+  color: mix(#c30,$maroon,40%);
+}
+
+/* Literal.String.Single */
+.highlight .ss {
+  color: mix(#fc3,$maroon,40%);
+}
+
+/* Literal.String.Symbol */
+.highlight .bp {
+  color: mix(#366,$maroon,40%);
+}
+
+/* Name.Builtin.Pseudo */
+.highlight .vc {
+  color: mix(#033,$maroon,40%);
+}
+
+/* Name.Variable.Class */
+.highlight .vg {
+  color: mix(#033,$maroon,40%);
+}
+
+/* Name.Variable.Global */
+.highlight .vi {
+  color: mix(#033,$maroon,40%);
+}
+
+/* Name.Variable.Instance */
+.highlight .il {
+  color: mix(#f60,$maroon,40%);
+}
+
+/* Literal.Number.Integer.Long */
+.css .o,
+.css .o + .nt,
+.css .nt + .nt {
+  color: mix(#999,$maroon,40%);
+}
