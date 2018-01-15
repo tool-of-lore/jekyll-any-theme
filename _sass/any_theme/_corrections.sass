@@ -34,12 +34,7 @@ form
     @extend .mt-0
   // Remove bottom margin for bottom elements
   .card-body
-    p,
-    ul,
-    pre,
-    table
-      &:last-of-type
-        @extend .mb-0
+    @include no-last-bottom()
     // Force lists in .list-groups after body
     & ~ ul
       @extend .list-group, .list-group-flush
@@ -49,10 +44,14 @@ form
     p:last-of-type
       @extend .mb-0
   // Force lists in .list-groups before body
-  & > ul
+  & ul
     @extend .list-group, .list-group-flush
     li
       @extend .list-group-item
+
+// MODALS
+.modal
+  @include no-last-bottom()
 
 // ALERTS
 @each $color, $value in $theme-colors

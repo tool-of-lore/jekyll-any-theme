@@ -7,9 +7,9 @@
 # Collapsible
 # Move #markdown-toc inside #toc-collapseOne .card-body
 # Refer to _includes/components/toc.html
-if $('#toc-collapseOne .card-body').length and $('#markdown-toc').length
+if $('#toc-collapseOne > div').length and $('#markdown-toc').length
 	$ '#markdown-toc'
-		.prependTo "#toc-collapseOne .card-body"
+		.prependTo "#toc-collapseOne"
 
 # Enable tooltips
 $ '[data-toggle*=tooltip]'

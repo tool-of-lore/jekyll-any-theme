@@ -6,7 +6,6 @@ permalink: customize/themes/
 #   side: left
 #   includes:
 #     - sidebar/themes.html
-theme: dnd
 themes:
   - Bootstrap
   - Basic Light Sans

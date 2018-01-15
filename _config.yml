@@ -14,9 +14,7 @@ defaults:
     values:
       fluid: false
       navbar: bottom
-      # theme: basic_light_sans
-
-# theme: basic_light_sans
+      theme: dnd
 
 emptyArray: []
 
