@@ -3,15 +3,26 @@
 // http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax
 @font-face {
   font-family: 'Scala Sans SC';
-  src: url('scalasans-regularsc-webfont.eot');
-  src: url('scalasans-regularsc-webfont.eot?#iefix') format('embedded-opentype'),
-       url('scalasans-regularsc-webfont.woff') format('woff'),
-       url('scalasans-regularsc-webfont.ttf') format('truetype'),
-       url('scalasans-regularsc-webfont.svg#ScalaSansSCRegular') format('svg');
+  src: url('scalasans-webfont.eot');
+  src: url('scalasans-webfont.eot?#iefix') format('embedded-opentype'),
+       url('scalasans-webfont.woff') format('woff'),
+       url('scalasans-webfont.ttf') format('truetype'),
+       url('scalasans-webfont.svg#ScalaSansSCRegular') format('svg');
   font-style: normal;
   font-weight: normal;
   // Not currently supported by browsers it would seem.
   // font-variant: small-caps;
+}
+
+@font-face {
+  font-family: 'Scala Sans SC';
+  src: url('scalasans-bold-webfont.eot');
+  src: url('scalasans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('scalasans-bold-webfont.woff') format('woff'),
+       url('scalasans-bold-webfont.ttf') format('truetype'),
+       url('scalasans-bold-webfont.svg#ScalaSansSCRegular') format('svg');
+  font-style: normal;
+  font-weight: bold;
 }
 
 @font-face {

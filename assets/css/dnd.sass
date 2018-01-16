@@ -40,7 +40,7 @@ $cyan:    mix(#17a2b8,$maroon,55%)
   background-image: url('/assets/images/dnd-bg.jpg')
   background-size: 100% auto
   background-position: top left
-  background-color: transparent
+  background-color: #E3C8A1
 
 // Kbd
 // $kbd-color: white
@@ -64,9 +64,9 @@ $headings-color: $maroon
 // $font-weight-base: 300
 $headings-font-weight: 400
 
-// BORDERS
-$card-border-radius: 0
-$dropdown-border-radius: 0
+// Helper
+.font-sans
+  font-family: $font-family-sans-serif
 
 // BLOCKQUOTES
 $blockquote-small-color: lighten(black,30%)
@@ -78,7 +78,15 @@ $code-color: brown
 // CARDS
 $card-bg: $khaki
 $card-cap-bg: darkkhaki
-$card-border-width: none
+$card-spacer-x: .75rem
+$card-spacer-y: .75rem
+$card-border-radius: 0
+$card-border-width: 0
+$card-border-color: black
+
+// Helper
+.card-border
+  border-width: 3px 0 !important
 
 // FORMS
 $custom-select-bg: rgba(white,.5)
@@ -87,12 +95,16 @@ $input-bg: rgba(white,.5)
 // LISTS
 $list-group-bg: rgba(white, .1)
 $list-group-action-color: rgba(black,.8)
+$list-group-item-padding-y: .35rem
+$list-group-item-padding-x: .75rem
 $component-active-bg: $maroon
 
 // TABLES
-$table-bg: rgba(white, .2)
+$table-bg: transparent
 $table-border-color: rgba(black,.05)
 $table-accent-bg: $khaki
+$table-border-width: 0
+$table-cell-padding-sm: .3rem .75rem
 
 // MODALS
 $modal-header-border-color: rgba(black,.2)
@@ -101,6 +113,7 @@ $modal-header-border-color: rgba(black,.2)
 $dropdown-bg: rgba(white,.4)
 $dropdown-link-hover-bg: rgba(white,.5)
 $dropdown-padding-y: 0
+$dropdown-border-radius: 0
 
 @import "any_theme"
 @import "any_theme/syntax_blood"
@@ -156,19 +169,10 @@ main
 
 // TABLES
 table
-  @extend .table-striped
+  @extend .table-striped, .table-sm, .font-sans
 
 .card
-  .card-footer,
-  .card-header
-    border-width: 10px
-    border-style: solid
-  .card-footer
-    @extend .pt-0
-    border-color: transparent transparent black transparent
-  .card-header
-    @extend .pb-0
-    border-color: black transparent transparent transparent
+  @extend .font-sans, .card-border
 
 // BLOCKQUOTES
 blockquote
