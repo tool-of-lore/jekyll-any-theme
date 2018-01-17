@@ -2,7 +2,15 @@
 Load page's `collection`, `fluid` liquid variabiles and `theme`. Are checked in `collection` or `page` scope.
 {%- endcapture -%}
 {%- include api/save.html -%}
-{%- include load/collection.html -%}
-{%- include load/fluid.html -%}
-{%- include load/theme.html -%}
-{%- include load/sidebar.html -%}
+{%- comment -%} Load collection {%- endcomment -%}
+{%- assign collection = site.collections | where: "label", page.collection | first -%}
+{%- comment -%} Load fluid {%- endcomment -%}
+{%- if collection.fluid or page.fluid -%}
+  {%- assign fluid = "-fluid" -%}
+{%- endif -%}
+{%- comment -%} Load theme {%- endcomment -%}
+{%- assign theme = collection.theme | default: page.theme | default: 'basic_light_sans' -%}
+{%- comment -%} Load sidebar {%- endcomment -%}
+{%- assign sidebar = collection.sidebar | default: page.sidebar -%}
+{%- comment -%} Load font-face {%- endcomment -%}
+{%- assign font_face = collection.font_face | default: page.font_face -%}

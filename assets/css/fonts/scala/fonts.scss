@@ -47,25 +47,13 @@
   font-weight: normal;
 }
 
-@mixin ScalaSansSC {
-  font-family: "Scala Sans SC", Helvetica, Arial, sans-serif;
-  text-transform: lowercase;
-  text-rendering: optimizeLegibility;
-  // font-variant should work with @font-face but currently browsers seem
-  // to be manually applying the transformation. Which means the fallbacks
-  // will be standard case.
-  // font-variant: small-caps;
-  // Thins the font rendering in Webkit browsers.
-  -webkit-font-smoothing: antialiased;
-}
-
-@mixin Scala {
-  font-family: Scala, Georgia, Times, serif;
-  font-variant: normal;
-  text-transform: none;
-}
-
-@mixin ScalaItalic {
-  @include Scala;
-  font-style: italic;
+@font-face {
+  font-family: 'Scala';
+  src: url('scala-bold-webfont.eot');
+  src: url('scala-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('scala-bold-webfont.woff') format('woff'),
+       url('scala-bold-webfont.ttf') format('truetype'),
+       url('scala-bold-webfont.svg#ScalaItalic') format('svg');
+  font-style: normal;
+  font-weight: bold;
 }

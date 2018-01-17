@@ -14,7 +14,7 @@
 		integrity="sha256-zozDkxLZ4hXQxKEFI8DTVkwNRd0J2KW0LxrN+/2RJVQ="
 		crossorigin="anonymous" />
 
-	<link rel="stylesheet" href="/assets/css/fonts/readmill-scala/fonts.css">
+	{% if font_face %}<link rel="stylesheet" href="/assets/css/{{ font_face }}">{% endif %}
 	<link rel="stylesheet" href="/assets/css/{{ theme }}.css" id="main-css">
 
 	<!-- Javascripts CDN -->

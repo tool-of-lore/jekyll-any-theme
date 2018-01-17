@@ -14,7 +14,8 @@ defaults:
     values:
       fluid: false
       navbar: bottom
-      theme: dnd
+      # theme: dnd
+      # font_face: fonts/scala/fonts.css
 
 emptyArray: []
 
