@@ -1,0 +1,44 @@
+week:
+  - name: Sterday
+  - name: Sunday
+  - name: Monday
+  - name: Trewsday
+  - name: Hevensday
+  - name: Mersday
+  - name: Highday
+    holiday: true
+months:
+  list:
+    - name: 2 Yule
+      days: 1
+      holiday: true
+    - name: Afteryule
+    - name: Solmath
+    - name: Rethe
+    - name: Astron
+    - name: Thrimidge
+    - name: Forelithe
+    - name: 1 Lithe
+      days: 1
+      holiday: true
+    - name: Mid-year's Day
+      days: 1
+      no_week: true
+      holiday: true
+    - name: Overlithe
+      days: 1
+      leap: true
+      holiday: true
+    - name: 2 Lithe
+      days: 1
+      holiday: true
+    - name: Afterlithe
+    - name: Wedmath
+    - name: Halimath
+    - name: Winterfilth
+    - name: Blotmath
+    - name: Foreyule
+    - name: 1 Yule
+      days: 1
+      holiday: true
+starts: 2017-12-22

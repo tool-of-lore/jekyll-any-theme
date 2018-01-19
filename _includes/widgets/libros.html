@@ -1,0 +1,152 @@
+<form id="widget-libros">
+  <div class="form-group">
+    <label for="libros-title">Title</label>
+    <input type="text" id="libros-title" class="form-control" placeholder="Title">
+  </div>
+  <div class="form-group">
+    <label for="libros-author">Author(s)</label>
+    <input type="text" id="libros-author" class="form-control" placeholder="Author(s)">
+  </div>
+  <div class="form-group">
+    <button type="submit">
+      Search Openlibrary
+    </button>
+    <input type="reset" value="Reset">
+  </div>
+  <div class="form-group">
+    <div class="card">
+      <div class="card-header">
+        Openlibrary results
+      </div>
+      <div class="list-group"></div>
+    </div>
+  </div>
+</form>
+
+<!-- <form id="input-form">
+	<h3>BOOK</h3>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input type="text" id="input-title" class="form-control" placeholder="Title">
+		</div>
+		<div class="form-group col-md-6">
+			<input type="text" id="input-author" class="form-control" placeholder="Author(s)">
+			<small>Author name or comma separated list</small>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-12">
+			<button type="button" id="ol-search" class="btn btn-secondary">
+				Search Openlibrary
+			</button>
+		</div>
+	</div>
+  <div class="form-row" id="ol-results">
+  </div>
+	<h3>DETAILS</h3>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" id="input-publishers" placeholder="Publisher(s)">
+			<small>Publisher or comma separated list</small>
+		</div>
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" id="input-publish_year" placeholder="Publish year">
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" id="input-cover" placeholder="Cover URL">
+		</div>
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" placeholder="Subjects">
+			<small>Comma separated list</small>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" id="input-isbn" placeholder="ISBN">
+		</div>
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" id="input-edition_key" placeholder="Open Library key">
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<select class="form-control" id="Support">
+				<option>Book</option>
+				<option>Ebook</option>
+				<option>Audiobook</option>
+			</select>
+			<small class="form-text text-muted">Book support</small>
+		</div>
+		<div class="form-group col-md-6">
+			<div class="input-group">
+				<input type="text" class="form-control" aria-label="Text input with segmented button dropdown" placeholder="Price">
+				<div class="input-group-btn">
+					<button type="button" id="button-currency" class="btn btn-outline-secondary">Currency $</button>
+					<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" data-currency="$" href="#">USD $</a>
+						<a class="dropdown-item" data-currency="€" href="#">Euro €</a>
+						<a class="dropdown-item" data-currency="£" href="#">Pound £</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h3>READING</h3>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" placeholder="Date" data-toggle="datepicker">
+			<small>Start reading</small>
+		</div>
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" placeholder="Date"  data-toggle="datepicker">
+			<small>End reading</small>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<input type="text" class="form-control" placeholder="Category">
+			<small>Your categories, manage from <a href="#">Categories</a> page</small>
+		</div>
+		<div class="form-group col-md-6">
+			<div class="dropdown show">
+				<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Not rated yet
+				</a>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<a class="dropdown-item" href="#">☆☆☆☆☆</a>
+					<a class="dropdown-item" href="#">★☆☆☆☆</a>
+					<a class="dropdown-item" href="#">★★☆☆☆</a>
+					<a class="dropdown-item" href="#">★★★☆☆</a>
+					<a class="dropdown-item" href="#">★★★★☆</a>
+					<a class="dropdown-item" href="#">★★★★★</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-12">
+			<textarea class="form-control" placeholder="Review" rows="3"></textarea>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<div class="form-check">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input"> Recommended
+				</label>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<div class="form-check">
+				<label class="form-check-label">
+					<input type="checkbox" class="form-check-input"> Difficult
+				</label>
+			</div>
+		</div>
+	</div>
+</form> -->

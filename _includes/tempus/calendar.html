@@ -1,0 +1,26 @@
+{%- assign calendar = include.calendar -%}
+{%- assign cal = site.emptyArray -%}
+{%- assign day_seconds = 86400 -%}
+{%- assign starts = calendar.starts | default: 'now' -%}
+{%- assign start_date = starts | date: "%s" -%}
+{%- assign year_day = 0 -%}
+{%- assign year_day_seconds = 0 -%}
+{%- for month in include.calendar.months.list -%}
+  {%- assign week_day_name = '' -%}
+  {%- assign days = calendar.months.days | default: month.days | default: 30 -%}
+  {%- for day in (1..days) -%}
+    {%- unless month.leap -%}
+      {%- assign week_day = year_day | modulo: calendar.week.size -%}
+      {%- unless month.no_week -%}
+        {%- assign week_day_name = calendar.week[week_day].name -%}
+        {%- assign year_day = year_day | plus: 1 -%}
+      {%- endunless -%}
+      {%- capture new_day -%}- {% if calendar.week[week_day].holiday %}<span class="text-success">{% endif %}{% if month.holiday %}<span class="text-danger">{% endif %}{{ day }}, **{{ month.name }}**, <em>{{ week_day_name }}</em> ({{ year_day_seconds | plus: start_date | date_to_string }}){% if month.holiday %}</span>{% endif %}{% if calendar.week[week_day].holiday %}</span>{% endif %}{%- endcapture -%}
+      {%- assign cal = cal | push: new_day -%}
+      {%- assign year_day_seconds = year_day_seconds | plus: 86400 -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endfor -%}
+Year days: {{ year_day_seconds | divided_by: day_seconds }}
+{% for c in cal %}{{ c }}
+{% endfor %}

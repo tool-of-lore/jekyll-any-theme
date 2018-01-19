@@ -1,0 +1,41 @@
+// WIDGET THEMES
+.widget-themes
+  @extend .ml-3
+  div.list-group a.list-group-item
+    @extend .py-2
+
+// TEMPUS
+// Set grey past or empty days
+.tempus-past,
+.tempus-empty
+  @extend .text-muted
+// Set grey and small the difference
+.tempus-difference
+  @extend .text-muted, .small
+
+// LIBROS
+#widget-libros
+  .card
+    @extend .my-4
+    div.list-group
+      & > a
+        @extend .list-group-item, .list-group-item-action, .flex-column, .align-items-start
+        small
+          @extend .text-muted
+        & > p,
+        & > div h5
+          @extend .mb-1
+        & > div
+          @extend .d-flex, .w-100, .justify-content-between
+    // ul
+    //   @extend .list-group
+    //   li
+    //     @extend .list-group-item
+    //     p:first-of-type
+    //       @extend .text-truncate, .mb-0, .font-weight-bold
+    //     p:last-of-type
+    //       @extend .text-muted, .small, .text-truncate, .mb-0
+  [type='submit']
+    @extend .btn, .btn-secondary
+  [type='reset']
+    @extend .btn, .btn-outline-secondary

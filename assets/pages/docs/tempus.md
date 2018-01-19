@@ -10,6 +10,14 @@ permalink: components/tempus/
 - Next
 - Calendars: [Middle-earth_calendar](https://en.wikipedia.org/wiki/Middle-earth_calendar)
 
+### Calendars
+
+```liquid
+{% raw %}{% include tempus/calendar.html calendar=site.data.calendars.shire %}{% endraw %}
+```
+
+{% include tempus/calendar.html calendar=site.data.calendars.shire %}
+
 ### Options
 
 **Time span**

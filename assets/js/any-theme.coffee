@@ -3,6 +3,8 @@
 
 {% include_relative any_theme/storage.coffee %}
 {% include_relative any_theme/login.coffee %}
+{% include_relative any_theme/themes.coffee %}
+{% include_relative any_theme/libros.coffee %}
 
 # Collapsible
 # Move #markdown-toc inside #toc-collapseOne .card-body
@@ -25,15 +27,4 @@ $ 'a[href="Page info"]'
 # Active navbar link on dropdowns
 $('li.dropdown').each ->
 	if $(@).find('div.dropdown-menu a.active').length then $(@).find('> a').addClass 'active'
-	true
-
-# Theme switcher
-$('.widget-themes a').each ->
-	$(@).on "click", (e) ->
-		e.preventDefault()
-		$('#main-css').attr 'href', "/assets/css/#{$(e.target).data('theme')}.css"
-		$('.widget-themes a').removeClass 'active'
-		$(e.target).addClass 'active'
-		$('#theme-value').text($(e.target).data('theme'))
-		true
 	true

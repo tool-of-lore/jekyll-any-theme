@@ -31,6 +31,7 @@ $code-font-size: 80%
 
 // Font family
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
+// $font-family-sans-serif: Verdana, Geneva, sans-serif
 $font-family-serif: Georgia, Times, "Times New Roman", serif
 // $font-family-headings-header: $font-family-serif
 
@@ -51,8 +52,8 @@ main
   @extend .py-5
   // Headings
   // Set a top margin
-  @include headings()
-    @extend .mt-3
+  @include headings(1,6,'','& > ')
+    @extend .mt-4
   // Reset to margin for first child heaings in the first row columns
   .row:first-child div[class*="col"]
     @include headings(1, 6, ':first-child')
