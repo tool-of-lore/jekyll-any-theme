@@ -15,27 +15,25 @@
 
 // LIBROS
 #widget-libros
-  .card
-    @extend .my-4
-    div.list-group
-      & > a
-        @extend .list-group-item, .list-group-item-action, .flex-column, .align-items-start
-        small
-          @extend .text-muted
-        & > p,
-        & > div h5
-          @extend .mb-1
-        & > div
-          @extend .d-flex, .w-100, .justify-content-between
-    // ul
-    //   @extend .list-group
-    //   li
-    //     @extend .list-group-item
-    //     p:first-of-type
-    //       @extend .text-truncate, .mb-0, .font-weight-bold
-    //     p:last-of-type
-    //       @extend .text-muted, .small, .text-truncate, .mb-0
+  // Styles
+  a.no-results
+    @extend .disabled
   [type='submit']
     @extend .btn, .btn-secondary
   [type='reset']
     @extend .btn, .btn-outline-secondary
+  // Extends for List-groups with custom content
+  // https://getbootstrap.com/docs/4.0/components/list-group/#custom-content
+  // .card
+  //   @extend .my-4
+#libros-results
+  & > a
+    @extend .list-group-item, .list-group-item-action, .flex-column, .align-items-start
+    small
+      @extend .text-muted
+    & > div.row div.col
+      p,
+      div h5
+        @extend .mb-1
+      div
+        @extend .d-flex, .w-100, .justify-content-between
