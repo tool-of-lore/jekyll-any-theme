@@ -6,6 +6,7 @@ libros =
   input_fields: $ '#widget-libros [placeholder="Title"], [placeholder="Author(s)"]'
   results: $ '#libros-results'
   reset_button: $ '#widget-libros [type="reset"]'
+  template: $('#template-book').html()
   init: () ->
     # Submit events
     libros.submit_button.on 'click', libros.submit_event
@@ -19,46 +20,7 @@ libros =
         libros.input_title.val().trim().replace /\s/g, "+"
         libros.input_author.val().trim().replace /\s/g, "+"
       ], Boolean).join '+'
-    if search_string
-      libros.loading(1)
-      $.getJSON "http://openlibrary.org/search.json?q=#{search_string}", (data) ->
-        libros.loading(0)
-        if data.docs.length == 0
-          libros.results.append $ "<a href='#' class='no-results'>No results</li>"
-        else
-          $.each data.docs, (i, item) ->
-            book = {
-              olid: item.cover_edition_key || null
-              authors: item.author_name || []
-              year: item.first_publish_year ? if item.publish_year? then item.publish_year[0] else item.publish_date ? ''
-              image: item.cover_edition_key || null
-              publisher: if item.publisher? then item.publisher[0] ? ''
-              title: item.title
-            }
-            if book.olid
-              entry = $("<a>", {'href': '#'})
-              entry.data 'book', book
-              row =  $ '<div>', {'class': 'row'}
-              if book.image
-                image_column = $ '<div>', {'class': 'col-2 pr-0'}
-                image_column.append $ '<img>', {
-                  'src': "http://covers.openlibrary.org/b/olid/#{book.image}-M.jpg",
-                  'class': 'card-img-top'
-                }
-                row.append image_column
-              content_column = $ '<div>', {'class': 'col'}
-              header = $ '<div>', {
-                html: $ '<h5>', { 'text': book.title }
-              }
-              header.append $ '<small>', { 'text': book.year }
-              content_column.append header
-              content_column.append $ '<p>', { 'text': book.authors.join ', ' }
-                .append $ '<small>', { 'text': book.publisher }
-              row.append content_column
-              entry.append row
-              libros.results.append entry
-            true
-        true
+    if search_string then libros.search search_string
     true
   loading: (b) ->
     libros.results.html ''
@@ -76,7 +38,50 @@ libros =
   book_event: (e) ->
     e.preventDefault()
     data = $(e.currentTarget).data 'book'
-    console.log e,data
+    console.log data
+    true
+  search: (s) ->
+    libros.loading(1)
+    $.getJSON "http://openlibrary.org/search.json?q=#{s}", (data) ->
+      libros.loading(0)
+      if data.docs.length == 0
+        libros.results.append $ "<a href='#' class='no-results'>No results</li>"
+      else
+        $.each data.docs, libros.loop
+      true
+    true
+  loop: (i, item) ->
+    book = {
+      olid: item.cover_edition_key ? null
+      authors: item.author_name ? []
+      year: item.first_publish_year ?
+        if item.publish_year?
+          item.publish_year[0]
+        else item.publish_date ? ''
+      image: item.cover_edition_key ? null
+      publisher: if item.publisher? then item.publisher[0] ? ''
+      title: item.title
+    }
+    if book.olid
+      result = $ libros.template
+      result.find('div.col div h5').text book.title
+      libros.results.append result
+      # link = $ "<a>", {'href': '#', 'data-book': LZString.compressToBase64 JSON.stringify book}
+      # row =  $ '<div>', {'class': 'row'}
+      # if book.image
+      #   row.append $ '<div>', {
+      #     class: 'col-2 pr-0'
+      #     html: $ '<img>', {'src': "http://covers.openlibrary.org/b/olid/#{book.image}-M.jpg"}
+      #   }
+      # header = $ '<div>', {
+      #     html: $ '<h5>', { 'text': book.title }
+      #   }
+      #   .append $ '<small>', { 'text': book.year }
+      # content_column = $ '<div>', {'class': 'col'}
+      #   .append header
+      #   .append $ '<p>', { 'text': book.authors.join ', ' }
+      #   .append $ '<small>', { 'text': book.publisher }
+      # libros.results.append link.append row.append content_column
     true
 
 libros.init()

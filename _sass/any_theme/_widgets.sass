@@ -31,9 +31,12 @@
     @extend .list-group-item, .list-group-item-action, .flex-column, .align-items-start
     small
       @extend .text-muted
-    & > div.row div.col
-      p,
-      div h5
-        @extend .mb-1
-      div
-        @extend .d-flex, .w-100, .justify-content-between
+    & > div.row
+      img
+        @extend .card-img-top
+      div.col
+        p,
+        div h5
+          @extend .mb-1
+        div
+          @extend .d-flex, .w-100, .justify-content-between
