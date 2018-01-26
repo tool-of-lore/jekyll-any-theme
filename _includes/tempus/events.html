@@ -1,3 +1,9 @@
+{%- capture api -%}
+events
+
+- ok
+{%- endcapture -%}
+{%- include api/save.html -%}
 {%- assign now = "now" | date: "%s" | plus: 0 -%}
 {%- assign format = include.format | default: "%B %-d %A" -%}
 {%- assign day_seconds = 86400 -%}

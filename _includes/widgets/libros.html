@@ -1,10 +1,9 @@
 <form id="widget-libros">
+  <fieldset>
   <div class="form-group">
-    <label for="libros-title">Title</label>
     <input type="text" id="libros-title" class="form-control" placeholder="Title">
   </div>
   <div class="form-group">
-    <label for="libros-author">Author(s)</label>
     <input type="text" id="libros-author" class="form-control" placeholder="Author(s)">
   </div>
   <div class="form-group">
@@ -13,26 +12,42 @@
     </button>
     <input type="reset" value="Reset">
   </div>
-</form>
-<div id="libros-results" class="list-group">
+  <!-- Open Library results -->
+  <div id="libros-results" class="list-group">
   <template id="template-book">
-    <a href="#" data-book="">
-      <div class="row">
-        <div class="col-2 pr-0">
-          <img src="">
-        </div>
-        <div class="col">
-          <div>
-            <h5></h5>
-            <small></small>
-          </div>
-          <p></p>
-          <small></small>
-        </div>
-      </div>
-    </a>
-  </template>
+<div class="row">
+  <div class="libros-image-container col-2 pr-0">
+  </div>
+  <div class="col">
+    <div class="libros-header">
+      <h5 class="libros-title"></h5>
+      <small class="libros-year"></small>
+    </div>
+    <p class="libros-author"></p>
+    <small class="libros-publisher"></small>
+  </div>
 </div>
+  </template>
+  </div>
+  <div class="form-group">
+    <input type="text" id="libros-year" class="form-control" placeholder="Year">
+  </div>
+  <div class="form-group">
+    <input type="text" id="libros-publisher" class="form-control" placeholder="Publisher(s)">
+  </div>
+  <div class="form-group">
+    <input type="text" id="libros-image_url" class="form-control" placeholder="Image URL">
+  </div>
+  <div class="form-group">
+    <input type="date" id="start_reading" class="form-control" placeholder="Start reading" data-toggle="datepicker">
+  </div>
+  <div class="form-group">
+    <input type="date" id="end_reading" class="form-control" placeholder="End reading"  data-toggle="datepicker">
+  </div>
+  <pre class="highlight"><code class="language-txt" id="libros-yml"></code></pre>
+  </fieldset>
+</form>
+
 
 <!-- <form id="input-form">
 	<h3>BOOK</h3>

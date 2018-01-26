@@ -13,6 +13,12 @@
 .tempus-difference
   @extend .text-muted, .small
 
+// PAGE INFO
+#pageinfoModal table
+  @extend .table-sm
+  tr td:first-child
+    @extend .pl-3
+
 // LIBROS
 #widget-libros
   // Styles
@@ -31,12 +37,12 @@
     @extend .list-group-item, .list-group-item-action, .flex-column, .align-items-start
     small
       @extend .text-muted
-    & > div.row
-      img
-        @extend .card-img-top
-      div.col
-        p,
-        div h5
-          @extend .mb-1
-        div
-          @extend .d-flex, .w-100, .justify-content-between
+    .libros-image-container img
+      @extend .card-img-top
+    .libros-title,
+    .libros-author
+      @extend .mb-1
+    .libros-header
+      @extend .d-flex, .w-100, .justify-content-between
+    &:last-child
+      @extend .mb-3
