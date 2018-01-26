@@ -28,3 +28,6 @@ $ 'a[href="Page info"]'
 $('li.dropdown').each ->
 	if $(@).find('div.dropdown-menu a.active').length then $(@).find('> a').addClass 'active'
 	true
+
+# Initiate clipboard.js
+new Clipboard '.btn'

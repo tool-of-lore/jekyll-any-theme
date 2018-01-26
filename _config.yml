@@ -17,6 +17,29 @@ defaults:
       # theme: dnd
       # font_face: fonts/scala/fonts.css
 
+scripts:
+  -
+    name: jQuery
+    url: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+  -
+    name: Popper.js
+    url: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  -
+    name: Bootstrap
+    url: "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"
+  -
+    name: Lz-Sting
+    url: "https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.js"
+  -
+    name: yaml.js
+    url: "https://cdnjs.cloudflare.com/ajax/libs/yamljs/0.3.0/yaml.min.js"
+  -
+    name: Datepicker
+    url: "https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.4/datepicker.js"
+  -
+    name: Clipboard.js
+    url: "https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"
+
 emptyArray: []
 
 exclude: ["assets/css_no/"]

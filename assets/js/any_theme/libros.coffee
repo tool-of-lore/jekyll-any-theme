@@ -100,14 +100,13 @@ libros =
       libros.results.append result
     true
   update_yml: () ->
-    console.log 'ok'
     obj = {}
     for input in libros.widget.find '.form-control'
       key = $(input).attr('id').replace "libros-", ''
       if $(input).val() then obj[key] = $(input).val()
     # Update view
     libros.widget.find "#libros-yml"
-      .html YAML.stringify { "book": obj }
+      .html YAML.stringify [ obj ]
 
 libros.init()
 
