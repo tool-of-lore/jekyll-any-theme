@@ -14,6 +14,7 @@ login = {
     login.submit.prop 'disabled', false
     return
   init: () ->
+    console.log login.link
     login.link
       .attr 'data-placement', "left"
       .on "click", login.modal_event
