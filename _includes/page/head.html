@@ -15,7 +15,7 @@
 		crossorigin="anonymous" />
 
 	{% if font_face %}<link rel="stylesheet" href="/assets/{{ font_face }}">{% endif %}
-	<link rel="stylesheet" href="/assets/css/{{ theme }}.css" id="main-css">
+	<link rel="stylesheet" href="{{ "/assets/css/" | append: theme | append: ".css" | absolute_url }}" id="main-css">
 
 	<!-- Javascripts CDN -->
 	{% for script in site.scripts %}
