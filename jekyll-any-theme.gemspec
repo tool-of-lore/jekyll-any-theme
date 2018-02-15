@@ -2,11 +2,12 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-any-theme"
-  spec.version       = "0.1.0"
+  spec.version       = "0.1.1"
   spec.authors       = ["Alex Petrosh"]
   spec.email         = ["petrosh@users.noreply.github.com"]
 
   spec.summary       = %q{Jekyll any theme – Customizable Bootstrap 4}
+  spec.description   = "Jekyll any theme – Customizable Bootstrap 4"
   spec.homepage      = "https://tool-of-lore.github.io/jekyll-any-theme/"
   spec.license       = "MIT"
 
