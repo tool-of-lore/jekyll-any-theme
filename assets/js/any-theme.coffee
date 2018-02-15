@@ -1,10 +1,10 @@
 ---
 ---
 
-{% include_relative any_theme/storage.coffee %}
-{% include_relative any_theme/login.coffee %}
-{% include_relative any_theme/themes.coffee %}
-{% include_relative any_theme/libros.coffee %}
+{% include js/storage.coffee %}
+{% include js/login.coffee %}
+{% include js/themes.coffee %}
+{% include js/libros.coffee %}
 
 # Collapsible
 # Move #markdown-toc inside #toc-collapseOne .card-body
