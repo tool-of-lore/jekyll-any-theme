@@ -1,3 +1,3 @@
 <li class="nav-item">
-  <a class="nav-link{% if page.url == link[0].url %} active{% endif %}" href="{{ site.url }}{{ link[0].url | default: nav }}">{{ nav }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
+  <a class="nav-link{% if page.url == link[0].url %} active{% endif %}" href="{{ link[0].url | default: nav }}">{{ nav }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
 </li>

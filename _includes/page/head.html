@@ -14,8 +14,8 @@
 		integrity="sha256-zozDkxLZ4hXQxKEFI8DTVkwNRd0J2KW0LxrN+/2RJVQ="
 		crossorigin="anonymous" />
 
-	{% if font_face %}<link rel="stylesheet" href="{{ site.url }}/assets/{{ font_face }}">{% endif %}
-	<link rel="stylesheet" href="{{ site.url }}/assets/css/{{ theme }}.css" id="main-css">
+	{% if font_face %}<link rel="stylesheet" href="/assets/{{ font_face }}">{% endif %}
+	<link rel="stylesheet" href="/assets/css/{{ theme }}.css" id="main-css">
 
 	<!-- Javascripts CDN -->
 	{% for script in site.scripts %}
@@ -23,6 +23,6 @@
 	{% endfor %}
 
 	<!-- any-theme.js is deferred -->
-	<script src="{{ site.url }}/assets/js/any-theme.js" defer></script>
+	<script src="{{ "/assets/js/any-theme.js" | absolute_url }}" defer></script>
 </head>
 <body>

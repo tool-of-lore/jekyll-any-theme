@@ -51,7 +51,7 @@ right:
 							<div class="dropdown-menu" aria-labelledby="{{ list_title_slug }}_dropdown">
 								{% for item in list %}
 									{%- assign link = site.pages | where:'title', item | default: nil -%}
-									<a class="dropdown-item{% if page.url == link[0].url %} active{% endif %}" href="{{ site.url }}{{ link[0].url }}">{{ item }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
+									<a class="dropdown-item{% if page.url == link[0].url %} active{% endif %}" href="{{ link[0].url }}">{{ item }}{% if page.url == link[0].url %} <span class="sr-only">(current)</span>{% endif %}</a>
 								{% endfor %}
 							</div>
 						</li>
