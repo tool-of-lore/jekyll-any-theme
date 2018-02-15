@@ -1,5 +1,5 @@
 login = {
-  link: $ 'a[href="Login"]'
+  link: $ 'a[href$="Login"]'
   form: $ '#loginModal'
   field: $ '#personalToken'
   submit: $ '#submitLogin'
