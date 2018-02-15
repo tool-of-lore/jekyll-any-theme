@@ -1,3 +1,15 @@
+###
+  Store `any-theme` object in `localStorage`, LZ compressed to Base 64.
+  @example
+  // Get a key's value or whole object
+  storage.get([key])
+  @example
+  // set a value for a key
+  storage.set(key, value)
+  @example
+  // Remove a key value pair or clear whole object
+  storage.clear([key])
+###
 storage = {
   init: () ->
     if !localStorage.getItem("any-theme")? then storage.store { "created": new Date().getTime() }

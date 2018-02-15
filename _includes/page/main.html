@@ -1,4 +1,13 @@
+{% capture api %}
+Render `<main>` content and eventually the sidebar.  
+Split content by `<!--row-->` and `<!--column-->` and loop to render.
+
+- **Called by** `_layouts/default.html`
+- **Call** `_includes/page/sidebar.html`
+{% endcapture %}
+{%- include api/save.html -%}
 <main class="container{{ fluid }}">
+  {%- comment -%} Check sidebar left {%- endcomment -%}
   {% if sidebar.side == 'left' %}
   <div class="row">
     {% include page/sidebar.html %}
@@ -7,19 +16,23 @@
   <div class="row">
     <div class="col">
   {% endif %}
+  {%- comment -%} Loop rows {%- endcomment -%}
   {% assign rows = content | split: "<!--row-->" %}
   {%- for row in rows -%}
   <div class="row">
     {% assign j = forloop.index0 %}
+    {%- comment -%} Loop columns {%- endcomment -%}
     {%- assign columns = row | split: "<!--column-->" -%}
     {%- for column in columns -%}
     <div class="col">
+      {%- comment -%} Render column {%- endcomment -%}
       {% assign column_live = rows[j] | split: "<!--column-->" %}
       {{ column_live[forloop.index0] | strip }}
     </div>
     {% endfor %}
   </div>
   {%- endfor -%}
+  {%- comment -%} Check sidebar right {%- endcomment -%}
   {% if sidebar.side == 'right' %}
     </div>
     {% include page/sidebar.html %}

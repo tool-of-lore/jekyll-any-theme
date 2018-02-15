@@ -80,7 +80,7 @@ libros =
       year: item.first_publish_year ?
         if item.publish_year? then item.publish_year[0] else item.publish_date ? null
       publisher: if item.publisher? then item.publisher[0] else ''
-      olid: item.cover_edition_key ? null
+      olid: item.cover_edition_key ? item.edition_key ? null
     }
     # Append data to template
     if book.olid?
@@ -92,10 +92,12 @@ libros =
       ['title', 'year', 'author', 'publisher'].map (field) ->
         result.find(".libros-#{field}").text book[field]
       if book.image_url
-        result.find('.libros-image-container').append $ '<img>', {
-          src: book.image_url
-          alt: book.title
-        }
+        result.find('.libros-image-container')
+          .addClass 'col-2'
+          .append $ '<img>', {
+            src: book.image_url
+            alt: book.title
+          }
       # Append book to results
       libros.results.append result
     true
@@ -109,44 +111,3 @@ libros =
       .html YAML.stringify [ obj ]
 
 libros.init()
-
-# 
-# $ '#libros-results'
-# 	.on "click", "a", (e) ->
-# 		e.preventDefault()
-# 		loading 1
-# 		ol_key = this.href.match(/([^\/]*)\/*$/)[1]
-# 		$.getJSON "http://openlibrary.org/api/books?bibkeys=#{ol_key}&format=json&jscmd=data", (data) ->
-# 			loading 0
-# 			book = data[ol_key]
-# 			$(".widget-libros [placeholder='Author(s)']").val book.authors.map (a) -> return a.name
-# 				.addClass "is-valid"
-# 			$ ".widget-libros [placeholder='Title']"
-# 				.val book.title
-# 					.addClass "is-valid"
-# 			# $("#input-publishers").val book.publishers.map (p) -> return p.name
-# 			# 	.addClass "is-valid"
-# 			# $("#input-publish_year").val book.publish_date
-# 			# 	.addClass "is-valid"
-# 			# $("#input-edition_key").val book.identifiers.openlibrary[0]
-# 			# 	.addClass "is-valid"
-# 			# $("#input-isbn").val book.identifiers.isbn_10[0]
-# 			# 	.addClass "is-valid"
-# 			# $("#input-cover").val book.cover.medium || ''
-# 			# 	.addClass "is-valid"
-# 			return
-# 		return
-# 
-# $ () ->
-# 	# Initialize datepicker
-# 	# $('[data-toggle="datepicker"]').datepicker {
-# 	# 	autoHide: true
-# 	# 	zIndex: 2048
-# 	# 	format: 'yyyy-mm-dd'
-# 	# }
-# 	# Enable currecy button
-# 	# if $('#button-currency').length and $('a[data-currency]').length
-# 	# 	$ 'a[data-currency]'
-# 	# 		.on "click", (e) ->
-# 	# 			new_currency = $(e.target).attr "data-currency"
-# 	# 			$('#button-currency').text $('#button-currency').text().slice(0, -1) + new_currency

@@ -30,14 +30,16 @@ $font-size-base: 1.1rem
 $code-font-size: 80%
 
 // Font family
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,700')
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
 // $font-family-sans-serif: Verdana, Geneva, sans-serif
 $font-family-serif: Georgia, Times, "Times New Roman", serif
-// $font-family-headings-header: $font-family-serif
+$font-family-headings-header: 'Rubik', sans-serif
+$font-family-headings: 'Rubik', sans-serif
 
 // Weights
 // $font-weight-base: 300
-$headings-font-weight: 400
+// $headings-font-weight: 900
 
 @import "any_theme"
 @import "any_theme/syntax_default"
@@ -53,7 +55,7 @@ main
   // Headings
   // Set a top margin
   @include headings()
-    @extend .mt-4
+    @extend .mt-4, .mb-3
   // Reset to margin for first child heaings in the first row columns
   .row:first-child div[class*="col"]
     @include headings(1, 6, ':first-child')

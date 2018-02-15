@@ -12,10 +12,15 @@ defaults:
     scope:
       path: assets/pages
     values:
-      fluid: false
-      navbar: bottom
+      # fluid: true
+      # navbar: top
       # theme: dnd
-      # font_face: fonts/scala/fonts.css
+      font_face: fonts/scala/fonts.css
+      sidebar:
+        side: right
+        # width: 4
+        includes:
+          - widgets/toc.html
 
 scripts:
   -

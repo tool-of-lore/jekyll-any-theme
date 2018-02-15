@@ -1,0 +1,26 @@
+{%- capture api -%}
+Return the Github URL hosting the `file` feeded with optional `branch` parameter.
+
+- **Usage**
+
+```liquid
+{% raw %}{% include filters/link_to_file.html %}
+{% comment %}http://github.com/:owner/:repo/blob/:branch/:file_path{% endcomment %}{% endraw %}
+```
+
+- **Include**
+
+#### `file`
+
+- **Type:** string
+- **Default:** `page.path`
+- **Description:** The file path
+
+#### `branch`
+
+- **Type:** string
+- **Default:** `master`
+- **Description:** The file branch
+{%- endcapture -%}
+{%- include api/save.html -%}
+{%- assign link_to_file = include.file | default: page.path -%}{{ site.github.repository_url }}/blob/{{ include.branch | default: 'master' }}/{{ link_to_file }}

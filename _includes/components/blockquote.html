@@ -1,3 +1,22 @@
+{% capture api %}
+Return the HTML Bootstrap 4 blockquote, possible includes are `text, author, source, link`
+
+- **Usage**
+
+```liquid
+{% raw %}{% include components/blockquote.html text="Markdown text" author="Author name" source="Source" link="Url" %}{% endraw %}
+```
+
+- **Return**
+
+```html
+<blockquote class="blockquote">
+  Rendered Markdown text
+  <footer>Author name <cite title="Source"><a href="Url">Source</a></cite></footer>
+</blockquote>
+```
+{% endcapture %}
+{%- include api/save.html -%}
 <blockquote class="blockquote">
   {{ include.text | markdownify }}
   <footer>{{ include.author }} <cite title="{{ include.source }}">{% if include.link %}<a href="{{ include.link }}">{% endif %}&ldquo;{{ include.source }}&rdquo;{% if include.link %}</a>{% endif %}</cite></footer>

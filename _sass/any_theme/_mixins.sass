@@ -7,9 +7,5 @@
 
 // Reset bottom margin of :last-og-type in cards and modals
 @mixin no-last-bottom()
-  p,
-  ul,
-  pre,
-  table
-    &:last-of-type
-      @extend .mb-0
+  & > :last-child
+    @extend .mb-0

@@ -36,15 +36,15 @@ form
   .card-body
     @include no-last-bottom()
     // Force lists in .list-groups after body
-    & ~ ul
-      @extend .list-group, .list-group-flush
-      li
-        @extend .list-group-item
+    // & ~ ul
+    //   @extend .list-group, .list-group-flush
+    //   li
+    //     @extend .list-group-item
   .card-footer
     p:last-of-type
       @extend .mb-0
   // Force lists in .list-groups before body
-  & ul
+  & > ul
     @extend .list-group, .list-group-flush
     li
       @extend .list-group-item

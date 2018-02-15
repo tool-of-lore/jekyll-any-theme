@@ -1,3 +1,30 @@
+{% capture api %}
+Return the HTML Bootstrap 4 navbar given in liquid as `include.nav` or `site.nav`. Expected are `right` and `left` arrays with the page title. Array elements containing an array are rendered as dropdowns.
+
+``` yml
+left:
+  - Home
+  - Docs:
+    - Tempus
+    - Libros
+  - Customize:
+    - Css
+    - Themes
+  - About
+right:
+  - Login
+```
+
+- **Usage**
+
+```liquid
+{% raw %}{% include page/navbar.html nav=site.data.navbar %}{% endraw %}
+```
+
+- **Called by** `_includes/page/top.html` to render main navigation
+- **Call** `_includes/components/navbar_link.html` to render singular links
+{% endcapture %}
+{% include api/save.html %}
 {%- assign navigation = include.nav | default: site.navbar -%}
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md">

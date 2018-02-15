@@ -2,10 +2,6 @@
 title: Themes
 description: Theme switcher
 permalink: customize/themes/
-# sidebar:
-#   side: left
-#   includes:
-#     - sidebar/themes.html
 themes:
   - Bootstrap
   - Basic Light Sans

@@ -1,7 +1,27 @@
+{% capture api %}
+Swap `<header>` and `<navbar>` order by setting liquid `navbar: "top"` or `"bottom"` for pages or collections, in front matter or config defaults.
+
+- **Usage**
+
+`navbar: "bottom"` or `nil`
+
+1. `<header>`
+1. `<navbar>`
+
+`navbar: "top"`
+
+1. `<navbar>`
+1. `<header>`
+
+- **Called by** `_layouts/default.html`
+- **Call** `_includes/page/navbar.html`, `_includes/page/header.html`
+{% endcapture %}
+{%- include api/save.html -%}
 {%- if page.navbar == 'top' or collection.navbar == 'top' -%}
   {% include page/navbar.html nav=site.data.navbar %}
 {%- endif -%}
 {% include page/header.html %}
-{%- if page.navbar == 'bottom' or collection.navbar == 'bottom' -%}
+{%- assign navbar_bottom = page.navbar | default: collection.navbar | default: 'bottom' -%}
+{%- if navbar_bottom == 'bottom' -%}
   {% include page/navbar.html nav=site.data.navbar %}
 {%- endif -%}

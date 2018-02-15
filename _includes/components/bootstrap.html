@@ -192,22 +192,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 # Blockquote
 
-Usage:
-
-```liquid
-{% raw %}{% include components/blockquote.html text="Markdown text" author="Author name" source="Source" link="Url" %}{% endraw %}
-```
-
-HTML:
-
-```html
-<blockquote class="blockquote">
-  Text markdownified
-  <footer>Author name <cite title="Source"><a href="url">Source</a></cite></footer>
-</blockquote>
-```
-
-Render:
+{% include api/get.html file="components/blockquote.html" %}
 
 {%- assign quote = site.data.citations | sample -%}
 {%- assign source = quote.sources | sample -%}
