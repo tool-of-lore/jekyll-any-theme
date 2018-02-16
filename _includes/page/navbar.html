@@ -25,6 +25,7 @@ right:
 - **Call** `_includes/components/navbar_link.html` to render singular links
 {% endcapture %}
 {% include api/save.html %}
+{%- assign default_nav = site.html_pages -%}
 {%- assign navigation = include.nav | default: site.navbar -%}
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md">

@@ -15,7 +15,8 @@
 		integrity="sha256-zozDkxLZ4hXQxKEFI8DTVkwNRd0J2KW0LxrN+/2RJVQ="
 		crossorigin="anonymous" />
 
-	{% if font_face %}<link rel="stylesheet" href="{{ "/assets/" | append: font_face | absolute_url }}">{% endif %}
+{% if page.google_webfont %}<link href="https://fonts.googleapis.com/css?family={{ page.google_webfont }}" rel="stylesheet">{% endif %}
+{% if page.font_face %}<link rel="stylesheet" href="{{ '/assets/fonts/' | append: page.font_face | absolute_url }}">{% endif %}
 	<link rel="stylesheet" href="{{ "/assets/css/" | append: theme | append: ".css" | absolute_url }}" id="main-css">
 
 	<!-- Javascripts CDN -->
